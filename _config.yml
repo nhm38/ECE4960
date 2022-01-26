@@ -1,11 +1,9 @@
 # Site settings
-title: Great New Blog Title
+title: ECE 4960
 author:
-  name: N M
-  email: your-email@domain.com
-description: "Great site about Jekyll on GH-Pages."
+  name: Natalie Morris
+  email: nhm38@cornell.edu
+description: "Coursework for ECE 4960: Fast Robots."
 
-# Build settings
-remote_theme: jekyll/minima
-
+# Theme
 theme: jekyll-theme-slate
