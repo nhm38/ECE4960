@@ -6,8 +6,8 @@ show_sidebar: false
 
 My name is Natalie.
 
-I am a senior in MAE.
+I'm a senior in MAE.
 
-I run cross country and track & field.
+I run cross country and track & field for Cornell.
 
-![Photograph of myself](https://github.com/nhm38/ECE4960/blob/main/img/Roster%20Photo.jpg)
+![Photograph of myself](https://github.com/nhm38/ECE4960/blob/main/img/MyPhoto.png)
