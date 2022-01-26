@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Page With Contents
-subtitle: Example page with contents
+title: Lab 1
+subtitle: Artemis
 show_sidebar: false
 ---
 
