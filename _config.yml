@@ -3,4 +3,4 @@ title: ECE 4960: Fast Robots
 description: Coursework for ECE 4960
 
 # Theme
-theme: jekyll-theme-slate
+remote_theme: pages-themes/primer@v0.2.0
