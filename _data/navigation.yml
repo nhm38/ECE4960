@@ -3,3 +3,5 @@
   dropdown:
     - name: Lab 1
       link: /lab1-page/
+- name: About
+  link: /about/
