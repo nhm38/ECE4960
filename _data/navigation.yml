@@ -1,5 +1,4 @@
-- name: Pages
+- name: Labs
   link: /#
-  dropdown:
-    - name: Page With Sidebar
-      link: /lab1-page/
+    - name: Lab 1
+    link: /lab1-page/
