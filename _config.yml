@@ -1,6 +1,9 @@
-# Site Settings
-title: ECE 4960: Fast Robots
-description: Coursework for ECE 4960
+# Site settings
+title: Great New Blog Title
+author:
+  name: N M
+  email: your-email@domain.com
+description: "Great site about Jekyll on GH-Pages."
 
-# Theme
-remote_theme: pages-themes/primer@v0.2.0
+# Build settings
+remote_theme: jekyll/minima
