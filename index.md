@@ -2,7 +2,6 @@
 title: Home Page Title
 subtitle: Home Page Subitle
 layout: page
-callouts: home_callouts
 show_sidebar: true
 ---
 
