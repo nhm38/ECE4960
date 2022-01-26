@@ -10,4 +10,4 @@ I'm a senior in MAE.
 
 I run cross country and track & field for Cornell.
 
-![Photograph of myself](https://github.com/nhm38/ECE4960/blob/main/img/MyPhoto.png)
+![_Photograph of myself_](https://github.com/nhm38/ECE4960/blob/b3c632344b08db7dfc52cc8caaf68fff4ccf3d45/img/MyPhoto.png)
