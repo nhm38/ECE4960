@@ -1,5 +1,5 @@
 - name: Labs
   link: /#
-    dropdown:
-      - name: Lab 1
-        link: /lab1-page/
+  dropdown:
+    - name: Lab 1
+      link: /lab1-page/
