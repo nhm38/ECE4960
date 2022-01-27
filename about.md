@@ -10,4 +10,4 @@ I'm a senior in MAE (mechanical engineering).
 
 I run cross country and track & field for Cornell.
 
-![photograph of Cornell](https://upload.wikimedia.org/wikipedia/commons/b/b5/Cornell_-_Entrance_to_campus.jpg)
+![photograph of myself](img/MyPhoto.png)
