@@ -24,11 +24,9 @@ show_sidebar: false
 
 {% include youtube.html video="mfgcybbQz18" %}
 
-
 3. Serial Monitor Example
 
 {% include youtube.html video="8p_e_DGtcAQ" %} 
-
 
 4. Analog Read/Temperature Example
     - I changed the example code to only output the raw temperature values for ease of reading
@@ -39,7 +37,6 @@ Serial.printf("Temperature: %d\n", temp_raw);
 {% include youtube.html video="We0yZWZzr20" %} 
 
 You can see the temperature increase when I wrap my hand around the Artemis Nano and then decrease when it's placed up against the cold window (it was 3&deg;F outside!). 
-
 
 5. Pulse Density Microphone Example
 
