@@ -19,13 +19,13 @@ show_sidebar: false
     - Hooked up the Artemis Nano to my laptop using the USB-C cable
 2. Blink Example
 
-https://user-images.githubusercontent.com/98340266/151292144-77544abc-2cc7-46c7-872c-c3a6bcf32efe.mp4
+![blink ex video](https://user-images.githubusercontent.com/98340266/151292144-77544abc-2cc7-46c7-872c-c3a6bcf32efe.mp4)
 
 
 
 3. Serial Monitor Example
 
-https://user-images.githubusercontent.com/98340266/151291882-91457c74-6c64-406c-bb5a-efd955dd0a85.mp4
+![serial ex](https://user-images.githubusercontent.com/98340266/151291882-91457c74-6c64-406c-bb5a-efd955dd0a85.mp4)
 
 
 
@@ -36,18 +36,13 @@ https://user-images.githubusercontent.com/98340266/151291882-91457c74-6c64-406c-
 Serial.printf("Temperature: %d\n", temp_raw);
 ```
 
-https://user-images.githubusercontent.com/98340266/151291895-f44fc38d-c176-4885-a475-a60c07037c91.mp4
+![temperature ex](https://user-images.githubusercontent.com/98340266/151291895-f44fc38d-c176-4885-a475-a60c07037c91.mp4)
 
 You can see the temperature increase when I wrap my hand around the Artemis Nano and then decrease when it's placed up against the cold window (it was 3&deg;F outside!). 
 
 
 5. Pulse Density Microphone Example
 
-https://user-images.githubusercontent.com/98340266/151292161-b8c59eb3-3694-46fc-8972-6b8daca4a644.mp4
+![microphone ex](https://user-images.githubusercontent.com/98340266/151292161-b8c59eb3-3694-46fc-8972-6b8daca4a644.mp4)
 
 I used an online tone generator on my phone to play a frequnecy at 440 Hz. You can see the microphone picks up a values that's close to that frequency.
-
-img/Lab1-artemis-pdm.mp4
-
-
-
