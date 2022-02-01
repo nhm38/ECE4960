@@ -46,4 +46,4 @@ You can see the temperature increase when I put my hand around the Artemis Nano 
 
 {% include youtube.html video="j4tkVlPPoTI" %} 
 
-I used an [online tone generator](https://onlinetonegenerator.com/) on my phone to play a frequnecy at 440 Hz. You can see the microphone picks up a value that's close to that frequency.
+I used an [online tone generator](https://onlinetonegenerator.com/) on my phone to play a frequency at 440 Hz. You can see the microphone picks up a value that's close to that frequency.
