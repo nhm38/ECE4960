@@ -28,29 +28,47 @@ show_sidebar: false
 - Executed all the tasks in the demo notebook in JupyterLab
     - Updated the MAC address of the Artemis Nano in the configuration.yaml file
     - Checked the UUIDs in the Arduino sketch and Python configuration matched
+    - Sent a PING command to which the Artemis sends back PONG
+    - Sent 2 integers which the Artemis returns
+ 
+ 
  ![JupyterLab demo code](img/demo.JPG)
+ 
+ 
  ### Task 1
- - I wrote the ECHO command
+ - I wrote the ECHO command in the ble_arduino sketch
 
 ![Arduino ECHO code](img/echo.png)
 
 ### Task 2
-- I wrote the SEND_THREE_FLOATS command
+- I wrote the SEND_THREE_FLOATS command in the ble_arduino sketch
 
 ![Arduino 3 Floats code](img/floats.png)
 
 I used the following python code to send the commands from the computer to the Artemis Nano for Tasks 1 & 2:
 
 ```
-code
+ble.send_command(CMD.ECHO, "What's Up")
+ble.send_command(CMD.SEND_THREE_FLOATS, "-1.23|45.67|8.9")
 ```
 
 ![JupyterLab echo and floats code](img/echo_3floats.JPG)
 
 ### Task 3
-- I wrote the following python code to ...
+- I wrote the following python code to 
+
 ```
-code 2
+ble_float = 0.0
+def notif_handler(uuid, ble_byte_array):
+    global ble_float
+    ble_float = ble.bytearray_to_float(ble_byte_array)
+
+ble.start_notify(ble.uuid['RX_FLOAT'], notif_handler)
+
+import asyncio
+while True:
+    print(ble_float)
+    await asyncio.sleep(1)
 ```
 
 
