@@ -41,13 +41,19 @@ show_sidebar: false
 
 I used the following python code to send the commands from the computer to the Artemis Nano for Tasks 1 & 2:
 
-()
+```
+code
+```
 
-![JupyterLab echo and floats code](img/echo_3floats)
+![JupyterLab echo and floats code](img/echo_3floats.JPG)
 
 ### Task 3
 - I wrote the following python code to ...
-()
-embedded video
+```
+code 2
+```
+
+
+{% include youtube.html video="https://youtu.be/qN0IdphDal4" %}
 
 ### Task 4
