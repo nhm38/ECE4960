@@ -5,5 +5,7 @@
       link: /lab1-page/
     - name: Lab 2
       link: /lab2-page/
+    - name: Lab 3
+      link: /lab3-page/
 - name: About
   link: /about/
