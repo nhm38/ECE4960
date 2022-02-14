@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Lab 1
+title: Lab 2
 subtitle: Bluetooth Low Energy (BLE)
 show_sidebar: false
 ---
@@ -55,7 +55,7 @@ ble.send_command(CMD.SEND_THREE_FLOATS, "-1.23|45.67|8.9")
 ![JupyterLab echo and floats code](img/echo_3floats.JPG)
 
 ### Task 3
-- I wrote the following python code to 
+- I wrote the following python code for a notification handler, a callback function which is called on notification, which updates the global variable when the specified characteristic changes. Its input parameters are the UUID and a byte array. The byte array is converted to a float and assigned to the global variable.
 
 ```
 ble_float = 0.0
@@ -70,8 +70,9 @@ while True:
     print(ble_float)
     await asyncio.sleep(1)
 ```
+The start_notify function activates notifications to be sent when the characteristic specified by the UUID is updated so constantly having to check for updates is unnecessary. The while loop prints the global variable then waits for 1 second.
 
-
-{% include youtube.html video="https://youtu.be/qN0IdphDal4" %}
+{% include youtube.html video="qN0IdphDal4" %}
 
 ### Task 4
+Maintaining the float data type is more efficient for a small amount of data, becuase it takes fewer bits to send a float than a string of the same length. However, if there's a lot of data, it's more efficient to put all the data together in a string. It's simpler to receive one string and reduces the memory cost of individually telling the computer each piece of data is a float rather than one string. A downside is having to parse out the float values from the string, and you need to be careful not to exceed byte limits.
