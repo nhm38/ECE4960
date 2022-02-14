@@ -28,18 +28,22 @@ show_sidebar: false
 - Executed all the tasks in the demo notebook in JupyterLab
     - Updated the MAC address of the Artemis Nano in the configuration.yaml file
     - Checked the UUIDs in the Arduino sketch and Python configuration matched
- (img/demo.JPG)
+ ![JupyterLab demo code](img/demo.JPG)
  ### Task 1
- - I wrote the EHCO command 
-(img/echo.png)
+ - I wrote the ECHO command
+
+![Arduino ECHO code](img/echo.png)
+
 ### Task 2
 - I wrote the SEND_THREE_FLOATS command
-(img/floats.png)
+
+![Arduino 3 Floats code](img/floats.png)
 
 I used the following python code to send the commands from the computer to the Artemis Nano for Tasks 1 & 2:
 
 ()
-(img/echo_3floats)
+
+![JupyterLab echo and floats code](img/echo_3floats)
 
 ### Task 3
 - I wrote the following python code to ...
