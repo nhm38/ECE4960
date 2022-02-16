@@ -19,18 +19,18 @@ show_sidebar: false
 # Procedure
 *I have Windows 11 on my laptop, so I faced many issues connecting to the Artemis Nano via Bluetooth through Jupyter notebooks. I ended up using the computers in the lab to complete the tasks.*
 
-- I installed Python 3.10.2 and pip 22.0.2
-    - Then installed virtualenv, a module to create isolated Python environments, and created a new virtual environmetn ece4960_ble
+- Installed Python 3.10.2 and pip 22.0.2
+    - Then installed virtualenv, a module to create isolated Python environments, and created a new virtual environment ece4960_ble in the project directory I would be using for this lab
 - Installed the following packages: numpy, pyyaml, colorama, nest_asyncio, bleak, jupyterlab
-- Downloaded the codebase containing ble_arduino and ble_python into the my project directory on my computer
+- Downloaded the codebase containing ble_arduino and ble_python into my project directory
 - Activated the ece4960_ble virtual environemnt and started the Jupyter server
-- Installed the ArduinoBLE library in the Arduino IDE and uploaded ble_arduino to the Artemis Nano
+- Installed the ArduinoBLE library through the Arduino IDE and uploaded ble_arduino to the Artemis Nano
     - The Artemis Nano printed its MAC address in the serail monitor
 - Executed all the tasks in the demo notebook in JupyterLab
     - Updated the MAC address of the Artemis Nano in the configuration.yaml file
     - Checked the UUIDs in the Arduino sketch and Python configuration matched
-    - Sent a PING command to which the Artemis sends back PONG
-    - Sent 2 integers which the Artemis returns
+    - Sent a PING command to which the Artemis sent back PONG
+    - Sent 2 integers which the Artemis returned
  
  
  ![JupyterLab demo code](img/demo.JPG)
