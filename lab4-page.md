@@ -31,9 +31,14 @@ Body width (@ the center): 3” = 7.62 cm
 Wheel separation: 3.5” = 8.89 cm (Distance from inner side of left wheel to inner side of right wheel)
 
 Ground clearance: 9/16” = 1.4288 cm
-~image
 
-~diagrams
+![Ground clearance img](img/lab4/Lab4-clearance.JPG)
+
+I used this scrap of paper to find the clearance. I changed the height of the tab and passed it under the car until it brushed the underside. Then I measured the length of the tab.
+
+
+![RC car Dimensions img](img/lab4/Lab4-car-dim-top.png)
+![RC car Dimensions img 2](img/lab4/Lab4-car-dim-side.png)
 
 ## Test 2
 ### Battery Life
@@ -44,23 +49,38 @@ When the battery dies, it can no longer power the motors, so the wheels start to
 
 ## Test 3
 ### Charging
-The 650mAh Li-Po batteries take about 90 minutes to fully charge after being fully depleted (1 - 2hours).
+The 650mAh Li-Po batteries take about 90 minutes to fully charge after being fully depleted (1-2hours).
 
 ## Test 4
 ### Drift
 While attempting to manually drive in a straight line, the RC car tend to drift to the RC car's left. The car was driving on smooth hard wood floors. I checked the levelness of the surface using an app on my iPhone.
 
-~image
-Surface levelness at the starting point
+Surface Levelness at the starting point
+![Start Surface Level](img/lab4/Lab4-start.jpg)
 
-~image
-Surface levelness at the middle point
+Surface Levelness at the middle point
+![Middle Surface Level](img/lab4/Lab4-middle.jpg)
 
-~image
-Surface levelness at the end point
+Surface Levelness at the end point
+![End Surface Level](img/lab4/Lab4-end.jpg)
 
-Driving slow (impluse inputs by pressing the drive forward button quickly) caused a drift of 1 foot and 6 inches (45.72 cm) to the left 10 ft from the RC car's starting point.
+Overall, my floor is very level, so that will not influence the motion of the RC car.
 
+### Driving Forward Slowly
+~video
+
+Driving slow (impluse control inputs by repeatedly pressing the drive forward button) caused a drift of 1 foot and 6 inches (45.72 cm) to the left 10 ft from the RC car's starting point.
+
+This is a still taken from a different angle
+![Slow Drift](img/lab4/Lab4-test4-slow.JPG)
+
+
+~ video
 Driving fast (continuously holding down the drive forward button) caused a drift of 1 foot and 8 7/8 inches (53.0225 cm) to the left 9 ft from the RC car's starting point.
+
+This is a still taken from a different angle
+![Fast Drift](img/lab4/Lab4-test4-fast.JPG)
+
+
 
 
