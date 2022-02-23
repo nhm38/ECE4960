@@ -143,5 +143,132 @@ There is less jaggedness due to noise and less response to big jumps.
 ### Gyroscope
 
 {% include youtube.html video="7lgcWMfqQpw" %}
+The output values are all comparable. The pitches all follow each other. The same goes for the rolls. The values for yaw are reasonable as well.
 
 {% include youtube.html video="4Fj0Cngpv8k" %}
+
+This is my code for all the IMU tests:
+
+```
+#include "ICM_20948.h" // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
+#include <Wire.h>
+#include <math.h>
+
+#define AD0_VAL 0
+
+ICM_20948_I2C myICM; // Create an ICM_20948_I2C object
+
+// All my variables here
+unsigned long past = 0;
+double pitch_a_LPF[] = {0,0};
+const int n = 1;
+double dt = 0;
+unsigned long prev = 0;
+double pitch_g = 0;
+double roll_g = 0;
+double yaw_g = 0;
+double pitch = 0;
+double roll = 0;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Wire.begin();
+  Serial.begin(115200);
+  myICM.begin(Wire, AD0_VAL);
+
+  //Serial.print("accX, accY, accZ, gyrX, gyrY, gyrZ "); // Plotter Legend
+  //Serial.print("Pitch, Roll ");
+  //Serial.print("Pitch");
+  //Serial.print("Pitch, Pitch LPF ");
+  //Serial.print("Pitch, Roll, Yaw ");
+  //Serial.print("Pitch(A), Roll(A), Pitch_LPF(A), Pitch(G), Roll(G), Yaw(G) ");
+  Serial.print("Pitch(A), Roll(A), Pitch(G), Roll(G), Pitch_co, Roll_co ");
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if (myICM.dataReady())
+  {
+    myICM.getAGMT(); // The values are only updated when you call 'getAGMT'
+    double period = millis()-past;
+    past = millis();
+
+    // PART 1 - Acc test
+
+    Serial.print( myICM.accX() );
+    Serial.print(", ");
+    Serial.print( myICM.accY() );
+    Serial.print(", ");
+    Serial.print( myICM.accZ() );
+    Serial.print(", ");
+    Serial.print( myICM.gyrX() );
+    Serial.print(", ");
+    Serial.print( myICM.gyrY() );
+    Serial.print(", ");
+    Serial.print( myICM.gyrZ() );
+
+
+    // PART 2 - Acc Pitch and Roll
+    
+    double pitch_a = atan2(myICM.accX(), myICM.accZ())*180/M_PI;
+    double roll_a = atan2(myICM.accY(), myICM.accZ())*180/M_PI;
+    
+    Serial.print(pitch_a);
+    Serial.print(", ");
+    Serial.print(roll_a);
+    Serial.print(", ");
+    
+
+    // PART 3 - Acc FFT tapping test
+
+    double pitch_a = atan2(myICM.accX(), myICM.accZ())*180/M_PI;
+    
+    Serial.print(pitch_a);
+    Serial.print(" ");
+    Serial.print(period);
+
+    
+    // PART 4 - Acc Pitch & LPF Pitch
+
+    double pitch_a = atan2(myICM.accX(), myICM.accZ())*180/M_PI;
+    
+    Serial.print(pitch_a);
+    Serial.print(", ");
+    
+    const float a = 0.22;
+    pitch_a_LPF[n] = a*pitch_a + (1-a)*pitch_a_LPF[n-1];
+    pitch_a_LPF[n-1] = pitch_a_LPF[n];
+    Serial.print(pitch_a_LPF[n]);
+    Serial.print(", ");
+ 
+    
+    // PART 5 - Gyr
+    
+    dt = (micros()-prev)/1000000.0;
+    prev = micros();
+    pitch_g = pitch_g - myICM.gyrY()*dt;
+    roll_g = roll_g + myICM.gyrX()*dt;
+    //yaw_g = yaw_g + myICM.gyrZ()*dt;
+
+    Serial.print(pitch_g);
+    Serial.print(", ");
+    Serial.print(roll_g);
+    Serial.print(", ");
+    //Serial.print(yaw_g);
+
+    // PART 6 - Complimentary Filter
+    double pitch = (pitch - myICM.gyrY()*dt)*0.9 + pitch_a*0.1;
+    double roll = (roll + myICM.gyrX()*dt)*0.9 + roll_a*0.1;
+    
+    Serial.print(pitch);
+    Serial.print(", ");
+    Serial.print(roll);
+       
+
+    Serial.println();    
+  }
+
+}
+```
+
