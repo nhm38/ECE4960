@@ -92,7 +92,7 @@ I used my hand which has an irregular shape, a lamp to change the amount of ambi
 
 ![IMU works img](img/lab3/Lab3-imu-functioning.png)
 
-- I changed the sketch to only output the data I needed for each test
+- Next, I changed the sketch to only output the data I needed for each test
   - I also looked at the difference between the raw IMU data vs the scaled IMU data.
 
 ### Raw IMU Data
@@ -106,7 +106,7 @@ I used my hand which has an irregular shape, a lamp to change the amount of ambi
 This video shows the x, y, and z components from the accelerometer and gyroscope.
 {% include youtube.html video="hk7wbxJ4Oho" %}
 
-The accleration ouputs are in units of milli g's. That is why the y acceleration (the green line) is offset from zero by 1000.
+The accleration ouputs are in units of milli g's. That is why the y acceleration (the green line) is offset from zero by 1000. You can see the 6 different line plots responsd appropriately to the movement of the sensor.
 
 {% include youtube.html video="J-Pxo03Zcy4" %}
 The accelerometer is pretty accurate.
