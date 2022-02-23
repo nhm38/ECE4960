@@ -34,7 +34,7 @@ show_sidebar: false
 
 - I uploaded File->Examples->Apollo3->Example05_Wire_I2C
     - VL53L1X I2C device address: 0x52 = 82 in decimal = 0b1010010 in binary
-    - ICM-20948 I2C address: AD0 = 0  0x68 = 104 in decimal = 0b1101000 in binary
+    - ICM-20948 I2C address: AD0 = 0 -> 0x68 = 104 in decimal = 0b1101000 in binary
         - AD0_VAL is 1 by default unless the ADR jumper is connected. Connecting the I2C ADR jumper changes the default address of the IMU and AD0_VAL becomes 0. In this case the internal jumper is connected, so AD0_VAL should be 0.
         - Becuase I connect the IMU first, I was able to properly detect its address before I connected the 2 TOF sensors
 
