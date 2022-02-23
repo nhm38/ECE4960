@@ -92,7 +92,9 @@ HAVEN’T GOTTEN THIS TO WORK YET
 - The scaled data looks less noisy
 
 9. Altered the sketch AGAIN -> use imu_test4. Check out the change in sensor values as you rotate, flip, and accelerate the board. Explain what you see in both acceleration and gyroscope data.
-video
+
+{% include youtube.html video="hk7wbxJ4Oho"}
+
 *** units is milli g ***
 10. Accelerometer: Use the equations from class to convert accelerometer data into pitch and roll.
  - Show the output at {-90, 0, 90} degrees pitch and roll. Hint: You can use the surface and edges of your table as guides to ensure 90 degree tilt/roll.
@@ -100,6 +102,10 @@ viedo
   - How accurate is your accelerometer? You may want to do a two-point calibration (i.e. measure the output at either end of the range, and calculate the conversion factor such that the final output matches the expected output).
 
 11. Try tapping the sensor and plot the frequency response. What frequency spectrum does the “unwanted noise” have?
+
+![Time Plot img](img/lab3/lab3_time_domain_IMG.png)
+
+![Freq Plot img](img/lab3/lab3_freq_domain_IMG.png)
 
 12. Use these measurements to guide your choice of a complimentary low pass filter cut off frequency (recall implementation details from the lecture. Discuss how the choice of cut off frequency affects the output.
 
