@@ -109,7 +109,7 @@ This video shows the x, y, and z components from the accelerometer and gyroscope
 The accleration ouputs are in units of milli g's. That is why the y acceleration (the green line) is offset from zero by 1000. You can see the 6 different line plots responsd appropriately to the movement of the sensor.
 
 {% include youtube.html video="J-Pxo03Zcy4" %}
-The accelerometer is pretty accurate.
+The accelerometer is pretty accurate. Both the pitch and roll changed by -90 and +90 degrees according to the tilting of the sensor.
 
 ### Frequency Response
 
@@ -132,18 +132,16 @@ I used this alpha in my code to find the pitch. Increasing f_c, the cutoff frequ
 
 {% include youtube.html video="I-S_GIImWKY" %}
 
+The low pass filter smooths out the data by removing some of the noise. I don't see significant lag with my filter. It follows the accelerometer pitch well.
+
+Here are two close up images to clearly see how the low pass filter is changing the output:
 ![IMU LPF img](img/lab3/Lab3-LPF1.png)
 
 ![IMU LPF img](img/lab3/Lab3-LPF2.png)
+There is less jaggedness due to noise and less response to big jumps.
 
 ### Gyroscope
 
 {% include youtube.html video="7lgcWMfqQpw" %}
 
-- Try adjusting the sampling frequency to see how it changes the accuracy of your estimated angles.
-- Use a complimentary filter to compute an estimate of pitch and roll which is both accurate and stable. Demonstrate its working range and accuracy, and that it is not susceptible to drift or quick vibrations.
-
 {% include youtube.html video="4Fj0Cngpv8k" %}
-
-
-
