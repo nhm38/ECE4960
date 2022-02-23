@@ -83,6 +83,6 @@ Driving fast (continuously holding down the drive forward button) caused a drift
 This is a still taken from a different angle
 ![Fast Drift](img/lab4/Lab4-test4-fast.JPG)
 
-
+This is something to take into consideration when applying control inputs in the future.
 
 
