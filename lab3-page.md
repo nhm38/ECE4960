@@ -20,8 +20,8 @@ show_sidebar: false
 - Soldering iron + solder
 
 # Procedure
-1. Installed the SparkFun VL53L1X Time of Flight Sensor library & the SparkFun 9DOF IMU Breakout ICM 20948 Arduino Library in the Arduino IDE.
-2. Thinking about their respective positioning on the fast robot car, I did all the soldering first.
+- Installed the SparkFun VL53L1X Time of Flight Sensor library & the SparkFun 9DOF IMU Breakout ICM 20948 Arduino Library in the Arduino IDE.
+- Thinking about their respective positioning on the fast robot car, I did all the soldering first.
 
 ![Dasiy Chain img](img/lab3/Lab3-daisy-chain.JPG)
 
@@ -32,7 +32,7 @@ show_sidebar: false
         
 ![Soldered Components img](img/lab3/Lab3-soldered-components.jpg)
 
-3. Uploaded File->Examples->Apollo3->Example05_Wire_I2C
+- Uploaded File->Examples->Apollo3->Example05_Wire_I2C
     - VL53L1X I2C device address: 0x52 = 82 in decimal = 0b1010010 in binary
     - ICM-20948 I2C address: AD0 = 0  0x68 = 104 in decimal = 0b1101000 in binary
         - AD0_VAL is 1 by default unless the ADR jumper is connected. Connecting the I2C ADR jumper changes the default address of the IMU and AD0_VAL becomes 0. In this case the internal jumper is connected, so AD0_VAL should be 0.
@@ -40,19 +40,23 @@ show_sidebar: false
 
 {% include youtube.html video="bHrGxIOisgo" %}
 
-4. I ran into the issue with printing the addresses when all the sensors are connected.
+I ran into the issue with printing the addresses when all the sensors are connected.
 
 ![Addresses img](img/lab3/Lab3-addresses-all-detected.png)
 
-5. I used .setDistanceModeShort();
-    - affected by ambient light less than the other mode.
-7. Uploaded File->Examples->SparkFun VL53L1X 4m Laser Distance Sensor->Example1_ReadDistance
+- I used .setDistanceModeShort(), the short distance mode
+    - Short distance mode is less affected by the ambient light conditions, but its maximum ranging distance is
+more limited
+
+### TOF Sensors Testing Setup
+
+![TOF test setup img](img/lab3/Lab3-tof-test.JPG)
+
+- Uploaded File->Examples->SparkFun VL53L1X 4m Laser Distance Sensor->Example1_ReadDistance
     - I changed the sketch to also get the ranging time and the presecribed inter-measurement period
     - Removed the vacuum tape from the sensor
     - Set the tof at the end of the tape measure and moved the black and red box towards and away from the sensor
     - Performed 3 trials
-
-![TOF test setup img](img/lab3/Lab3-tof-test.JPG)
 
 ### Range, accuracy, repeatability
 
@@ -61,7 +65,8 @@ show_sidebar: false
 - The sensor has good repeatability even in the short distance mode
 - The data is very linear between 0.5 feet and 2 feet which means the expected and actual measurements match and are therefore accurate
 - The x-offset of the graph shows the minimum discernable distance is around an inch in practice
-- I found the maximum distance measured in short distance mode to be 7.71 ft when the actual distance was 8 ft. After going past 8ft, the measured distance registered as 0.00 ft.
+- I found the maximum distance measured in short distance mode to be 7.71 ft when the actual distance was 8 ft. After going past 8ft, the measured distance registered as 0.00 ft
+
 ### Ranging time
 - I used the .getIntermeasurementPeriod() method
   - The specified inter-measurement period (in milliseconds) determines how frequently the sensor takes a measurement
@@ -74,10 +79,8 @@ According to the datasheet, the default timing budget is 100 ms
 
 - As I take measurements as different distances, the calculated time and period are constant
 - Increasing the timing budget increases the maximum distance the device can range and improves the repeatability error. However, average power consumption augments accordingly.
-- Using my hand and notebook didn’t change the results significantly.
+- I used my hand which has an irregular shape and a notebook which has a different surface to test the TOF sensor, and I didn’t see any significant changes to the results.
 
-Using notes from the pre-lab, hook up both ToF sensors simultaneously and demonstrate that both works.
-HAVEN’T GOTTEN THIS TO WORK YET
 
 8. Uploaded File -> Examples -> SparkFun 9DoF IMU Breakout – ICM 20948 – Arduino Library -> Arduino -> Example1_Basics
 ![IMU works img](img/lab3/Lab3-imu-functioning.png)
