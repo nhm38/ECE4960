@@ -21,7 +21,7 @@ show_sidebar: false
 
 # Procedure
 - I installed the SparkFun VL53L1X Time of Flight Sensor library & the SparkFun 9DOF IMU Breakout ICM 20948 Arduino Library in the Arduino IDE.
-- Thinking about their respective positioning on the RC car, I did all the soldering first.
+- Thinking about the sensor positioning on the RC car, I did all the soldering first.
 
 ![Dasiy Chain img](img/lab3/Lab3-daisy-chain.JPG)
 
