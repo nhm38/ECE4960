@@ -36,7 +36,7 @@ show_sidebar: false
     - VL53L1X I2C device address: 0x52 = 82 in decimal = 0b1010010 in binary
     - ICM-20948 I2C address: AD0 = 0 -> 0x68 = 104 in decimal = 0b1101000 in binary
         - AD0_VAL is 1 by default unless the ADR jumper is connected. Connecting the I2C ADR jumper changes the default address of the IMU and AD0_VAL becomes 0. In this case the internal jumper is connected, so AD0_VAL should be 0.
-        - Becuase I connect the IMU first, I was able to properly detect its address before I connected the 2 TOF sensors
+        - Becuase I connected the IMU first, I was able to properly detect its address before I connected the 2 TOF sensors
 
 {% include youtube.html video="bHrGxIOisgo" %}
 
@@ -67,9 +67,9 @@ You can see the TOF senor is half a foot from the black and red box, and in the 
 ![TOF data graph](img/lab3/tof_data_IMG.png)
 
 - The sensor has good repeatability even in the short distance mode (where the timing budget can be decreased more than in the other modes)
-- The data is linear between 0.5 feet and 2 feet which means the expected and actual measurements match very well. In this section the measurements are therefore accurate.
+- The data is linear between 0.5 feet and 2 feet which means the expected and actual measurements match very well. In this section the measurements are accurate.
 - The x-offset of the graph shows the minimum discernable distance in practice is around an inch
-- I found the maximum distance measured in short distance mode to be 7.71 ft (2.35 m) when the actual distance was 8 ft. After going past 8ft, the measured distance registered as 0.00 ft. The TOF sensor is not accurate at this distance.
+- I found the maximum distance measurable in short distance mode to be 7.71 ft (2.35 m) when the actual distance was 8 ft. After going past 8ft, the measured distance registered as 0.00 ft. However, the TOF sensor is not accurate at this distance.
 
 ### Ranging time
 - I used the .getIntermeasurementPeriod() method
@@ -82,7 +82,7 @@ You can see the TOF senor is half a foot from the black and red box, and in the 
 
 {% include youtube.html video="dusu5DqSAVc" %}
 
-As I take measurements as different distances, the calculated time and period are constant
+As I take measurements at different distances, the calculated time and period remain constant
 
 ### Different colors and textures
 I used my hand which has an irregular shape, a lamp to change the amount of ambient light, and a bright green notebook which has a different surface texture and color to test the TOF sensor. I didn’t see any significant changes to the results.
@@ -106,7 +106,7 @@ I used my hand which has an irregular shape, a lamp to change the amount of ambi
 This video shows the x, y, and z components from the accelerometer and gyroscope.
 {% include youtube.html video="hk7wbxJ4Oho" %}
 
-The accleration ouputs are in units of milli g's. That is why the y acceleration (the green line) is offset from zero by 1000. You can see the 6 different line plots responsd appropriately to the movement of the sensor.
+The accleration ouputs are in units of milli-g's. That is why the y acceleration (the green line) is offset from zero by 1000. You can see the 6 different line plots responsd appropriately to the movement of the sensor.
 
 {% include youtube.html video="J-Pxo03Zcy4" %}
 The accelerometer is pretty accurate. Both the pitch and roll changed by -90 and +90 degrees according to the tilting of the sensor.
