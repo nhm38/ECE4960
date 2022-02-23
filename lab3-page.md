@@ -112,14 +112,24 @@ The accleration ouputs are in units of milli g's. That is why the y acceleration
 The accelerometer is pretty accurate.
 
 11. Try tapping the sensor and plot the frequency response. What frequency spectrum does the “unwanted noise” have?
+### Frequency Response
 
 {% include youtube.html video="w4fQdkF16sE" %}
+
+I saved the data from the Serial Monitor and used the following MATLAB script to plot the time and frequency domains.
+![matlab img](img/lab3/lab3-fft-matlab.png)
 
 ![Time Plot img](img/lab3/lab3_time_domain_IMG.png)
 
 ![Freq Plot img](img/lab3/lab3_freq_domain_IMG.png)
 
-12. Use these measurements to guide your choice of a complimentary low pass filter cut off frequency (recall implementation details from the lecture. Discuss how the choice of cut off frequency affects the output.
+I was tapping at about 240 beats per minute (bpm) which is equivalent to about 4 Hz. Around 4 Hz there is a peak with an amplitude of 8. The sensor seems to be pretty noisy. I performed the following calculation to determine the Low Pass Filter parameters.
+
+![Calculations img](img/lab3/lab3-alpha-calc.png)
+
+I used this alpha in my code to find the pitch.
+
+### Implementation of the Low Pass Filter
 
 {% include youtube.html video="I-S_GIImWKY" %}
 
