@@ -98,10 +98,14 @@ HAVEN’T GOTTEN THIS TO WORK YET
 *** units is milli g ***
 10. Accelerometer: Use the equations from class to convert accelerometer data into pitch and roll.
  - Show the output at {-90, 0, 90} degrees pitch and roll. Hint: You can use the surface and edges of your table as guides to ensure 90 degree tilt/roll.
-viedo
+
+{% include youtube.html video="J-Pxo03Zcy4" %}
+
   - How accurate is your accelerometer? You may want to do a two-point calibration (i.e. measure the output at either end of the range, and calculate the conversion factor such that the final output matches the expected output).
 
 11. Try tapping the sensor and plot the frequency response. What frequency spectrum does the “unwanted noise” have?
+
+{% include youtube.html video="w4fQdkF16sE" %}
 
 ![Time Plot img](img/lab3/lab3_time_domain_IMG.png)
 
@@ -109,13 +113,21 @@ viedo
 
 12. Use these measurements to guide your choice of a complimentary low pass filter cut off frequency (recall implementation details from the lecture. Discuss how the choice of cut off frequency affects the output.
 
+{% include youtube.html video="I-S_GIImWKY" %}
+
 ![IMU LPF img](img/lab3/Lab3-LPF1.png)
 
 ![IMU LPF img](img/lab3/Lab3-LPF2.png)
 
 13. Gyroscope: Use the equations from class to compute pitch, roll, and yaw angles from the gyroscope.
   - Compare your output to the pitch and roll values from the accelerometer and the filtered response. Describe how they differ.
-  - Try adjusting the sampling frequency to see how it changes the accuracy of your estimated angles.
-  - Use a complimentary filter to compute an estimate of pitch and roll which is both accurate and stable. Demonstrate its working range and accuracy, and that it is not susceptible to drift or quick vibrations.
+
+{% include youtube.html video="7lgcWMfqQpw" %}
+
+- Try adjusting the sampling frequency to see how it changes the accuracy of your estimated angles.
+- Use a complimentary filter to compute an estimate of pitch and roll which is both accurate and stable. Demonstrate its working range and accuracy, and that it is not susceptible to drift or quick vibrations.
+
+{% include youtube.html video="4Fj0Cngpv8k" %}
+
 
 
