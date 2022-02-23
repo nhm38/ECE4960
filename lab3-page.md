@@ -85,7 +85,7 @@ As I take measurements as different distances, the calculated time and period ar
 ### Different colors and textures
 I used my hand which has an irregular shape, a lamp to change the amount of ambient light, and a bright green notebook which has a different surface texture and color to test the TOF sensor. I didn’t see any significant changes to the results.
 
-
+### IMU Sensor
 - I uploaded File -> Examples -> SparkFun 9DoF IMU Breakout – ICM 20948 – Arduino Library -> Arduino -> Example1_Basics
 
 ![IMU works img](img/lab3/Lab3-imu-functioning.png)
