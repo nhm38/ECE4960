@@ -101,9 +101,9 @@ viedo
 
 12. Use these measurements to guide your choice of a complimentary low pass filter cut off frequency (recall implementation details from the lecture. Discuss how the choice of cut off frequency affects the output.
 
-![IMU LPF img](img/lab3/Lab3-LPF (1).png)
+![IMU LPF img](img/lab3/Lab3-LPF1.png)
 
-![IMU LPF img](img/lab3/Lab3-LPF (2).png)
+![IMU LPF img](img/lab3/Lab3-LPF2.png)
 
 13. Gyroscope: Use the equations from class to compute pitch, roll, and yaw angles from the gyroscope.
   - Compare your output to the pitch and roll values from the accelerometer and the filtered response. Describe how they differ.
