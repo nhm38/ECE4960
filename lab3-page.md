@@ -38,7 +38,7 @@ show_sidebar: false
         - AD0_VAL is 1 by default unless the ADR jumper is connected. Connecting the I2C ADR jumper changes the default address of the IMU and AD0_VAL becomes 0. In this case the internal jumper is connected, so AD0_VAL should be 0.
         - see properly when just the IMU is connected – before I connected the 2 TOF I actually tested the IMU
 
-{% include youtube.html video="bHrGxIOisgo"}
+{% include youtube.html video="bHrGxIOisgo" %}
 
 4. I ran into the issue with printing the addresses when all the sensors are connected.
 
@@ -70,7 +70,7 @@ According to the datasheet, the default timing budget is 100 ms
   - It is possible to decrease it to 20 ms only in short distance mode
 - Also manually calculated the elapsed time using millis() and taking the difference of the time just after ranging starts and just after ranging stops
 
-{% include youtube.html video="dusu5DqSAVc"}
+{% include youtube.html video="dusu5DqSAVc" %}
 
 - As I take measurements as different distances, the calculated time and period are constant
 - Increasing the timing budget increases the maximum distance the device can range and improves the repeatability error. However, average power consumption augments accordingly.
@@ -93,7 +93,7 @@ HAVEN’T GOTTEN THIS TO WORK YET
 
 9. Altered the sketch AGAIN -> use imu_test4. Check out the change in sensor values as you rotate, flip, and accelerate the board. Explain what you see in both acceleration and gyroscope data.
 
-{% include youtube.html video="hk7wbxJ4Oho"}
+{% include youtube.html video="hk7wbxJ4Oho" %}
 
 *** units is milli g ***
 10. Accelerometer: Use the equations from class to convert accelerometer data into pitch and roll.
