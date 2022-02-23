@@ -147,6 +147,85 @@ The output values are all comparable. The pitches all follow each other. The sam
 
 {% include youtube.html video="4Fj0Cngpv8k" %}
 
+
+# Code
+This is my code for the TOF tests:
+```
+#include <ComponentObject.h>
+#include <RangeSensor.h>
+#include <SparkFun_VL53L1X.h>
+#include <vl53l1x_class.h>
+#include <vl53l1_error_codes.h>
+#include <Wire.h>
+#include "SparkFun_VL53L1X.h" //Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
+
+#define SHUTDOWN_PIN A3
+
+SFEVL53L1X distanceSensor;
+
+//Uncomment the following line to use the optional shutdown and interrupt pins.
+SFEVL53L1X distanceSensor2(Wire, SHUTDOWN_PIN);
+
+//global variables available anywhere in the program
+unsigned long startMillis;
+unsigned long currentMillis;
+unsigned long diff;
+
+void setup(void)
+{
+  Wire.begin();
+
+  Serial.begin(115200);
+  Serial.println("VL53L1X Qwiic Test");
+
+  if (distanceSensor.begin() != 0) //Begin returns 0 on a good init
+  {
+    Serial.println("Sensor failed to begin. Please check wiring. Freezing...");
+    while (1)
+      ;
+  }
+  Serial.println("Sensor online!");
+
+  pinMode(SHUTDOWN_PIN, OUTPUT);
+  digitalWrite(SHUTDOWN_PIN, LOW);
+
+  distanceSensor.setDistanceModeShort();
+}
+
+void loop(void)
+{
+  distanceSensor.startRanging(); //Write configuration bytes to initiate measurement
+  startMillis = millis();
+  while (!distanceSensor.checkForDataReady())
+  {
+    delay(1);
+  }
+  int distance = distanceSensor.getDistance(); //Get the result of the measurement from the sensor
+  distanceSensor.clearInterrupt();
+  distanceSensor.stopRanging();
+  currentMillis = millis();
+  diff = currentMillis-startMillis;
+
+  Serial.print("Distance(mm): ");
+  Serial.print(distance);
+
+  float distanceInches = distance * 0.0393701;
+  float distanceFeet = distanceInches / 12.0;
+
+  Serial.print("\tDistance(ft): ");
+  Serial.print(distanceFeet, 2);
+
+  //Serial.print("\tRanging Time(ms): ");
+  //Serial.print(diff);
+
+  
+  Serial.print("\tPeriod (ms): ");
+  Serial.print(distanceSensor.getIntermeasurementPeriod());
+
+  Serial.println();
+}
+```
+
 This is my code for all the IMU tests:
 
 ```
