@@ -48,7 +48,9 @@ I ran into the issue with printing the addresses when all the sensors are connec
     - Short distance mode is less affected by the ambient light conditions, but its maximum ranging distance is
 more limited
 
-### TOF Sensors Testing Setup
+### VL53L1X TOF Sensor
+
+### Testing Setup
 
 ![TOF test setup img](img/lab3/Lab3-tof-test.JPG)
 
@@ -85,13 +87,13 @@ As I take measurements as different distances, the calculated time and period ar
 ### Different colors and textures
 I used my hand which has an irregular shape, a lamp to change the amount of ambient light, and a bright green notebook which has a different surface texture and color to test the TOF sensor. I didn’t see any significant changes to the results.
 
-### IMU Sensor
+### ICM 20948 IMU Sensor
 - I uploaded File -> Examples -> SparkFun 9DoF IMU Breakout – ICM 20948 – Arduino Library -> Arduino -> Example1_Basics
 
 ![IMU works img](img/lab3/Lab3-imu-functioning.png)
 
 - I changed the sketch to only output the data I needed for each test
-  - I also did a test on the difference between the raw IMU data vs the scaled IMU data.
+  - I also looked at the difference between the raw IMU data vs the scaled IMU data.
 
 ### Raw IMU Data
 ![IMU works img](img/lab3/Lab3-imu-raw-data.png)
@@ -101,17 +103,13 @@ I used my hand which has an irregular shape, a lamp to change the amount of ambi
 
 - The scaled data looks less noisy
 
-9. Altered the sketch AGAIN -> use imu_test4. Check out the change in sensor values as you rotate, flip, and accelerate the board. Explain what you see in both acceleration and gyroscope data.
-
+This video shows the x, y, and z components from the accelerometer and gyroscope.
 {% include youtube.html video="hk7wbxJ4Oho" %}
 
-*** units is milli g ***
-10. Accelerometer: Use the equations from class to convert accelerometer data into pitch and roll.
- - Show the output at {-90, 0, 90} degrees pitch and roll. Hint: You can use the surface and edges of your table as guides to ensure 90 degree tilt/roll.
+The accleration ouputs are in units of milli g's. That is why the y acceleration (the green line) is offset from zero by 1000.
 
 {% include youtube.html video="J-Pxo03Zcy4" %}
-
-  - How accurate is your accelerometer? You may want to do a two-point calibration (i.e. measure the output at either end of the range, and calculate the conversion factor such that the final output matches the expected output).
+The accelerometer is pretty accurate.
 
 11. Try tapping the sensor and plot the frequency response. What frequency spectrum does the “unwanted noise” have?
 
