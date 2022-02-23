@@ -111,7 +111,6 @@ The accleration ouputs are in units of milli g's. That is why the y acceleration
 {% include youtube.html video="J-Pxo03Zcy4" %}
 The accelerometer is pretty accurate.
 
-11. Try tapping the sensor and plot the frequency response. What frequency spectrum does the “unwanted noise” have?
 ### Frequency Response
 
 {% include youtube.html video="w4fQdkF16sE" %}
@@ -127,7 +126,7 @@ I was tapping at about 240 beats per minute (bpm) which is equivalent to about 4
 
 ![Calculations img](img/lab3/lab3-alpha-calc.png)
 
-I used this alpha in my code to find the pitch.
+I used this alpha in my code to find the pitch. Increasing f_c, the cutoff frequency, increases RC which in turn increases the value of alpha and makes a more aggressive low pass filter.
 
 ### Implementation of the Low Pass Filter
 
@@ -137,8 +136,7 @@ I used this alpha in my code to find the pitch.
 
 ![IMU LPF img](img/lab3/Lab3-LPF2.png)
 
-13. Gyroscope: Use the equations from class to compute pitch, roll, and yaw angles from the gyroscope.
-  - Compare your output to the pitch and roll values from the accelerometer and the filtered response. Describe how they differ.
+### Gyroscope
 
 {% include youtube.html video="7lgcWMfqQpw" %}
 
