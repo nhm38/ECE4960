@@ -8,8 +8,8 @@ show_sidebar: false
 **Date: February 23rd, 2022**
 
 # Objectives
-1. Connect both motor drivers to the RC car motors
-2. Use the Artemis Nano to control the mtion of the RC car (open loop)
+1. Wire both motor drivers to the RC car motors
+2. Use the Artemis Nano to control the motion of the RC car (open loop)
 
 # Components
 - 1 x RC car
@@ -24,7 +24,7 @@ According to the motor driver datasheet, the power supply voltage can range betw
 
 ![Motor Driver wiring img](img/lab5/motor_driver_1.jpg) 
 
-I coupled AIN1, BIN1 in parallel and AIN2, BIN2 in parallel. To do this, I put the signal wire from the Artemis Nano through the first pin and soldered it in place. Then I bent the wire and looped it through the other pin and soldered in in place. Because the area is so small, I covered the wiring with hot glue to prevent contact between xIN1 and xIN2. I did the same thing for the respective outputs as well.
+I coupled AIN1, BIN1 in parallel and AIN2, BIN2 in parallel. To do this, I put the signal wire from the Artemis Nano through the first pin and soldered it in place. Then I bent the wire and looped it through the other pin and soldered it in place. Because the area is so small, I covered the wiring with hot glue to prevent contact between xIN1 and xIN2. I did the same thing for the respective outputs as well.
 
 ![Motor Driver Back img](img/lab5/motor_driver_back.JPG) 
 
@@ -77,7 +77,7 @@ This is the car running only on power from the batteries:
 {% include youtube.html video="Gw0Aqb5x6k8" %}
 
 ### 6.
-I went through the same process for the second motor driver. I connected one GND pin to the first motor driver and the other GND pin to the Artemis Nano. Now both the motor drivers and Artemis have a common ground. The input pins of the second motor driver are connected to pin 6 and 7 on the Artemis which are both PWM capable. V_IN is daisy chained from the first motor driver which is powered by the 850mAh, 3.7V battery. This is the output PWM and the motor driver output:
+I went through the same process for the second motor driver. I connected one GND pin to the first motor driver and the other GND pin to the Artemis Nano. Now both motor drivers and the Artemis have a common ground. The input pins of the second motor driver are connected to pin 6 and 7 on the Artemis which are both PWM capable. V_IN is daisy chained from the first motor driver which is powered by the 850mAh, 3.7V battery. This is the output PWM and the motor driver output:
 
 {% include youtube.html video="0A97kl01BDA" %}
 
