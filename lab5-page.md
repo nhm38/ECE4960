@@ -87,24 +87,27 @@ To show this side can spin its wheels in both directions I had them go clockwise
 {% include youtube.html video="9lZfLwp5H2Q" %}
 
 ### 7.
-I secured all the components in the car and uploaded code to drive forward for 3 seconds:
+I secured all the components in the car and uploaded code to drive forward for 3 seconds. This code segment includes the calibration factor I determined, but originally I ran both motors with the same input:
 
-IMG
+![Drive Forward Code img](img/lab5/TimedForwardDrive_code_IMG.png)
 
 I set the car at the end of an 8 ft long tape measure and ran the code.
 
-VIDEO
+{% include youtube.html video="Rk4dcQ2wNLI" %}
+
+As I found in Lab 4 as well, the car tends to drift to the left without any corrective action.
 
 ### 8. 
+The lower limit was affected by the battery voltage. In my experimentation, I started by incrementing the PWM signal by 10. I found that 10, 20, and 30 did not get the car to move. However, 40 worked and the car moved on the ground. Then I refined my step. 35 didn't work, 36 didn't work, but 37 had a little movement. So, I foudn that 37 was the barely minimum to get any movement at all.
 
 ### 9.
-Motor speed has a nonlinear response. Calibration will depend on PWM signal/motor speed and the battery voltage. I saw that the left side was lagging compared to the right side. At a PWM of 55, I found success by multiplying the left side speed by a factor of 1.4.
+Motor speed has a nonlinear response and depends on several factors. Calibration will depend on PWM signal/motor speed and the battery voltage. I saw that the left side was lagging compared to the right side, and at a PWM of 55, I found success by multiplying the left side speed by a factor of 1.4.
 
-VID
+{% include youtube.html video="82Fiz5QwBLs" %}
 
 ### 10.
 My plan for the open loop control was to drive straight, turn right, drive straight, turn left, and then reverse. I noticed that the turns wouldn't execute if run at the same speed as the forward/reverse movements. I doubled the speed of the motors compared to the foward/reverse speed. I used `delay()` to time the actions.
 
-IMG
+![Open Loop Code img](img/lab5/OpenLoopControl_code_IMG.png)
 
-VID
+{% include youtube.html video="lucEbOp-rXg" %}
