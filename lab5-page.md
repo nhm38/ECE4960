@@ -87,3 +87,24 @@ To show this side can spin its wheels in both directions I had them go clockwise
 {% include youtube.html video="9lZfLwp5H2Q" %}
 
 ### 7.
+I secured all the components in the car and uploaded code to drive forward for 3 seconds:
+
+IMG
+
+I set the car at the end of an 8 ft long tape measure and ran the code.
+
+VIDEO
+
+### 8. 
+
+### 9.
+Motor speed has a nonlinear response. Calibration will depend on PWM signal/motor speed and the battery voltage. I saw that the left side was lagging compared to the right side. At a PWM of 55, I found success by multiplying the left side speed by a factor of 1.4.
+
+VID
+
+### 10.
+My plan for the open loop control was to drive straight, turn right, drive straight, turn left, and then reverse. I noticed that the turns wouldn't execute if run at the same speed as the forward/reverse movements. I doubled the speed of the motors compared to the foward/reverse speed. I used `delay()` to time the actions.
+
+IMG
+
+VID
