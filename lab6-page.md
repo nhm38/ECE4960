@@ -81,11 +81,11 @@ The sequence of plots mirrors my thought process behind tuning the controller.
 
 ![pid control](img/lab6/kp3ki05kd02.png)
 
-![p control](img/lab6/kp3ki05kd03_error.png)
+![pid control 2](img/lab6/kp3ki05kd03_error.png)
 
-![p control](img/lab6/kp3ki04kd03_error.png)
+![pid control 3](img/lab6/kp3ki04kd03_error.png)
 
-![p control](img/lab6/kp3ki03kd03_error.png)
+![pid control 4](img/lab6/kp3ki03kd03_error.png)
 
 
 I found K_P = 3, K_D = 0.3, and K_I = 0.3 made a good controller for my system. The result is following motion.
@@ -112,7 +112,7 @@ Then I performed the drift! This is when I realized I needed to deal with deriva
 
 The turn when I changed the set point wasn’t working super efficiently. The radius of curvature was really big, so I changed how I handled the motor offset. The same PID gains worked well for this change. 
 
-ADD GRAPH
+![drift 2 ](img/lab6/drift.png)
 
 {% include youtube.html video="TprQ5wQ5p1o" %}
 
