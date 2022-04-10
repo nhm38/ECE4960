@@ -11,7 +11,7 @@ In this lab I will go through the steps to implement PID control in the car.
 
 ### Maximum Angular Speed
 video
-{% include youtube.html video="ETLwUZWXBHg" %}
+{% include youtube.html video="2AAV-NIbrSQ" %}
 
 I tested the car's max angular speed by ramping up then down the PWM value while driving one side of the wheels foward and the other side in reverse. Initially the max degrees per second (dps) was set to 1000 thinkkng that would be high enough to capture the data. In the first test you can see the saturation of the sensor at 1000. I increased the max dps to 2000 which is the maximum detectable angular rate of this sensor.
 
@@ -62,8 +62,11 @@ After implementing D control, I didn’t really notice any significant effects i
 
 ### Tuning the PID controller
 I first began by tuning my PID controller for orientation control on yaw which is measured in degrees. Graphs after many, many attempts. I will spare you all the funky graphs. There are like 12 images for this. I used a more intuitive way to tune my controller. I’ve learned about PID control in previous control theory classes (System Dynamics), so I was familiar with the effects of changing the PID gain. In general, increasing the proportional control decreases rise time and steady state error, but increases overshoot. Increasing derivative control decreases the overshoot but also decreases the settling time. Increasing the integral control decreases the rise time and steady state error, but also increases the overshoot and settling time.
-video
-video
+
+{% include youtube.html video="JeKcYg--6Ck" %}
+
+
+{% include youtube.html video="QRJbJfuGrng" %}
 
 I created new switch cases for the command types for the different tasks I performed throughout the lab. This made passing the proportional, integral, and derivative gains or any other information needed to the car/Artemis program easy.
 
@@ -71,14 +74,20 @@ I incorporated a tolerance such that if the measured yaw is within a quarter of 
 
 ### No Drift
 I tested my controller by using PID to drive in a straight line by setting the set point to zero degrees.
+
 ![ang spd 3 img](img/lab6/str line test.png) 
-VIDEO 
+
+{% include youtube.html video="kBfj52PUfC0" %}
+
 The hard active brake at the end causes the car to twist at the end of the video. Since this happens after executing and exiting the control loop, the change in yaw is not reflected in the data plotted.
 
 ### Drift
 Then I performed the drift! This is when I realized I needed to deal with derivative kick. The axes for both graphs are the same, so the visual comparison is easy. There is not sharp peak/jump when derivative on measurement is implemented.
 
 The turn when I changed the set point wasn’t working super efficiently. The radius of curvature was really big, so I changed how I handled the motor offset. The same PID gains worked well for this change. 
+
 ADD GRAPH
-video
-video
+
+{% include youtube.html video="TprQ5wQ5p1o" %}
+
+{% include youtube.html video="E7bKD6bndIg" %}
