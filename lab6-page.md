@@ -13,7 +13,7 @@ In this lab I will go through the steps to implement PID control in the car.
 video
 {% include youtube.html video="2AAV-NIbrSQ" %}
 
-I tested the car's max angular speed by ramping up then down the PWM value while driving one side of the wheels foward and the other side in reverse. Initially the max degrees per second (dps) was set to 1000 thinkkng that would be high enough to capture the data. In the first test you can see the saturation of the sensor at 1000. I increased the max dps to 2000 which is the maximum detectable angular rate of this sensor.
+I tested the car's max angular speed by ramping up then down the PWM value while driving one side of the wheels foward and the other side in reverse. Initially the max degrees per second (dps) was set to 1000 thinkkng that would be high enough to capture the data. In the first test you can see the saturation of the sensor at 1000. I increased the max dps to 2000 which is the maximum detectable angular rate of this sensor. I performed 3 tests and found the maximum to be just under 1200 dps.
 
 ![ang spd 1 img](img/lab6/Ang Spd t1.png)
 ![ang spd 2 img](img/lab6/Ang Spd t2.png)
@@ -40,7 +40,7 @@ uint8_t scalingFunc(double input)
 ```
 
 ### Low Pass Filter
-I implemented the digital low pass filter on the gyroscope. I noticed improvements in the drift and noise of the gyroscope sensor after enabling teh LPF.
+I implemented the digital low pass filter on the gyroscope. I noticed improvements in the drift and noise of the gyroscope sensor after enabling the LPF.
 ```
   // Set up Digital Low-Pass Filter configuration
   ICM_20948_dlpcfg_t myDLPcfg;
@@ -58,10 +58,18 @@ I implemented the digital low pass filter on the gyroscope. I noticed improvemen
   ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, true);
 ```
 ### Derivative Kick
-After implementing D control, I didn’t really notice any significant effects in the physical system when changing the set point. However, when I plotted the controller u, I did see a spike, the derivative kick, when the set point changed. I decided to implement “derivative on measurement” which might be more useful in other applications.
+After implementing D control, I didn’t really notice any significant effects in the physical system when changing the set point. However, when I plotted the controller u, I did see a spike, the derivative kick, when the set point changed. I decided to implement “derivative on measurement” which might be more useful in other applications. The difference is evident in the following graphs. The axes for both graphs are the same, so the visual comparison is easy. There is no sharp peak/jump when derivative on measurement is implemented.
+
+![DK](img/lab6/DK.png)
+![no DK](img/lab6/noDK.png)
+
 
 ### Tuning the PID controller
-I first began by tuning my PID controller for orientation control on yaw which is measured in degrees. Graphs after many, many attempts. I will spare you all the funky graphs. There are like 12 images for this. I used a more intuitive way to tune my controller. I’ve learned about PID control in previous control theory classes (System Dynamics), so I was familiar with the effects of changing the PID gain. In general, increasing the proportional control decreases rise time and steady state error, but increases overshoot. Increasing derivative control decreases the overshoot but also decreases the settling time. Increasing the integral control decreases the rise time and steady state error, but also increases the overshoot and settling time.
+I first began by tuning my PID controller for orientation control on yaw which is measured in degrees. Graphs after many, many attempts. I will spare you all the funky graphs. 
+
+![p control](img/lab6/kp1ki0kd0.png)
+
+I used a more intuitive way to tune my controller. I’ve learned about PID control in previous control theory classes (System Dynamics), so I was familiar with the effects of changing the PID gain. In general, increasing the proportional control decreases rise time and steady state error, but increases overshoot. Increasing derivative control decreases the overshoot but also decreases the settling time. Increasing the integral control decreases the rise time and steady state error, but also increases the overshoot and settling time.
 
 {% include youtube.html video="JeKcYg--6Ck" %}
 
@@ -82,7 +90,7 @@ I tested my controller by using PID to drive in a straight line by setting the s
 The hard active brake at the end causes the car to twist at the end of the video. Since this happens after executing and exiting the control loop, the change in yaw is not reflected in the data plotted.
 
 ### Drift
-Then I performed the drift! This is when I realized I needed to deal with derivative kick. The axes for both graphs are the same, so the visual comparison is easy. There is not sharp peak/jump when derivative on measurement is implemented.
+Then I performed the drift! This is when I realized I needed to deal with derivative kick.
 
 The turn when I changed the set point wasn’t working super efficiently. The radius of curvature was really big, so I changed how I handled the motor offset. The same PID gains worked well for this change. 
 
