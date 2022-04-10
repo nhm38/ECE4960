@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Lab 6
-subtitle: PID Control -- Task B: Drift
+subtitle: PID Control, Task B Drift
 show_sidebar: false
 ---
 
 **Date: March 2022**
 
-In this lab I will go through the steps to implement PID control in the car.
+In this lab I will go through the steps to implement PID control for the car.
 
 ### Maximum Angular Speed
 video
@@ -88,7 +88,7 @@ The sequence of plots mirrors my thought process behind tuning the controller.
 ![pid control 4](img/lab6/kp3ki03kd03_error.png)
 
 
-I found K_P = 3, K_D = 0.3, and K_I = 0.3 made a good controller for my system. The result is following motion.
+I found KP = 3, KD = 0.3, and KI = 0.3 made a good controller for my system. The result is following motion.
 
 {% include youtube.html video="JeKcYg--6Ck" %}
 
