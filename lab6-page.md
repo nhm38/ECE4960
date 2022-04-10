@@ -67,12 +67,30 @@ After implementing D control, I didn’t really notice any significant effects i
 ### Tuning the PID controller
 I first began by tuning my PID controller for orientation control on yaw which is measured in degrees. Graphs after many, many attempts. I will spare you all the funky graphs. 
 
-![p control](img/lab6/kp1ki0kd0.png)
-
 I used a more intuitive way to tune my controller. I’ve learned about PID control in previous control theory classes (System Dynamics), so I was familiar with the effects of changing the PID gain. In general, increasing the proportional control decreases rise time and steady state error, but increases overshoot. Increasing derivative control decreases the overshoot but also decreases the settling time. Increasing the integral control decreases the rise time and steady state error, but also increases the overshoot and settling time.
 
-{% include youtube.html video="JeKcYg--6Ck" %}
+The sequence of plots mirrors my thought process behind tuning the controller.
 
+![p control](img/lab6/kp1ki0kd0.png)
+
+![p control 2](img/lab6/kp2ki0kd0.png)
+
+![pd control](img/lab6/kp2ki0kd01.png)
+
+![pd controlc2](img/lab6/kp3ki0kd02.png)
+
+![pid control](img/lab6/kp3ki05kd02.png)
+
+![p control](img/lab6/kp3ki05kd03_error.png)
+
+![p control](img/lab6/kp3ki04kd03_error.png)
+
+![p control](img/lab6/kp3ki03kd03_error.png)
+
+
+I found K_P = 3, K_D = 0.3, and K_I = 0.3 made a good controller for my system. The result is following motion.
+
+{% include youtube.html video="JeKcYg--6Ck" %}
 
 {% include youtube.html video="QRJbJfuGrng" %}
 
