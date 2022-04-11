@@ -8,7 +8,7 @@ show_sidebar: false
 **Date: April 2022**
 
 ### Task B PID Stunt
-I started the car XXX meters from the wall. I never got the Kalman Filter to work well so I estimated the distance to start the drift to be XXX mm ( m) through several tests. Because the car is accelerating somewhat unpredictably as it starts from rest and move towards the car, extrapolating the TOF data wasn’t super accurate, so I decided not to use this approach.
+I started the car XXX meters from the wall. I never got the Kalman Filter to work well so I estimated the distance to start the drift to be XXX mm ( m) through several tests. Because the car is accelerating somewhat unpredictably as it starts from rest and move towards the car, extrapolating the TOF data wasn’t super accurate, so I decided not to use this approach either.
 
 video
 
@@ -17,7 +17,7 @@ My stunt is to drive up a ramp (made from a binder), make a jump, land, pause, t
 
 I started the front of the car 20 inches from the beginning of the ramp.
 
-![Open Loop Stunt Setup img](img/IMG_8806.JPG) 
+![Open Loop Stunt Setup img](img/Stunt Setup.JPG) 
 
 {% include youtube.html video="4xegUksMIC0" %}
 
