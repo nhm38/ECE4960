@@ -61,3 +61,6 @@ Here's the code:
 ```
 
 ### Blooper ?
+I wouldn't really call this a blooper, but I originally tested my stunt with a softer landing!
+
+{% include youtube.html video="i9vSJq8NvTA" %}
