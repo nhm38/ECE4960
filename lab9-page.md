@@ -16,10 +16,10 @@ The calculated yaw from the gyroscope data was very close to the given set point
 
 ![error img](img/lab9/err.png)
 
-I didn't get a video in the lab, but I did do a test at home. It worked just as well at home as it did in the lab.
+I dwas able to get the robot to spin about its axis without too much lateral movement.
 upload a video that shows if your robot turns (roughly) on axis.
 
-I set a tolerance such that when the error was less than half a degree the robot would stop and get distance data. Therefore, the angle error was less than 0.5 degrees. The axis of rotation might move 2.5cm to 5cm. So for a single distance measurement, error = 5cm * cos(0.5 deg) which is essentially 5cm.
+I set a tolerance such that when the error was less than half a degree the robot would stop and get distance data. Therefore, the angle error was less than 0.5 degrees. The axis of rotation may move 2.5cm to 5cm. This doesn't consider the drift of the gyroscope sensor and that effect on the yaw error. For a 360 degree rotation the erorr may be 5 to 20 degrees. 
 
 ### Read Out Distances
 Consider whether your robot behavior is reliable enough to assume that the readings are spaced equally in angular space, or if you are better off trusting the orientation from integrated gyroscope values.
