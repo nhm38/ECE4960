@@ -8,9 +8,9 @@ show_sidebar: false
 **Date: April 2022**
 
 ### Orientation control
-I chose to do PID control on the yaw data from the gyroscope (my z axis) to control to robot's orientation. I rotated in 18 degree increments to get an even 20 measurements. I actually got 21 data points because I collected for both 0 degrees and 360 degrees. I passed a PWM value of 130 to the motor drivers for turning. In lab 6 I determined the deadband for spinning from rest about the robot's axis was below a PWM value of 102, but I wasn't able to get the robot to turn reliably at values less than 130.
+I chose to do PID control on the yaw data from the gyroscope (my z axis) to control to robot's orientation. I rotated in 18 degree increments to get an even 20 measurements. I actually got 21 data points because I collected for both 0 degrees and 360 degrees. I passed a PWM value of 130 to the motor drivers. In lab 6 I determined the deadband for spinning from rest about the robot's axis was below a PWM value of 102, but I wasn't able to get the robot to turn reliably at values less than 130.
 
-The yaw calculated from the gyroscope was very close to 
+The calculated yaw from the gyroscope data was very close to the given set points.
 
 ![Controller img](img/lab9/PID controller graph.png)
 
@@ -83,11 +83,9 @@ To correct for the angular offset I subtracted 20 degrees from the orientation o
 
 
 ### Convert to Line-Based Map
-Feel free to correct slight errors found discovered during post processing in this step, but be sure to explain what caused them and how/why you correct them.
-
 ![pt5 img](img/lab9/init wall guess.png)
 
-Improve to:
+Improved to:
 ![pt5 img](img/lab9/fixed wall guess.png)
 
 ```
