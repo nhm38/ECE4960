@@ -86,8 +86,11 @@ To correct for the angular offset I subtracted 20 degrees from the orientation o
 ### Convert to Line-Based Map
 ![pt5 img](img/lab9/init wall guess.png)
 
-Improved to:
+This was improved to:
 ![pt5 img](img/lab9/fixed wall guess.png)
+
+But then I realized there was another obstacle.
+![pt5 img](img/lab9/fixed wall v2.png)
 
 I think the map looks pretty good!
 
@@ -102,8 +105,10 @@ Start:
 [4.85, 4.85],
 [2.5, 4.85],
 [2.5, 2.5],
-[4.85, 2.5]
-
+[4.85, 2.5],
+[-1.25, -1.25],
+[0.05, -1.25],
+[0.05, 0.05]
 
 End:
 [-4.25,-4.25],
@@ -115,6 +120,9 @@ End:
 [1.7,-0.7],
 [-0.7,-0.7],
 [-0.7,1.7],
-[1.7,1.7]
+[1.7,1.7],
+[-4.25,-2.85],
+[-2.85,-2.85],
+[-2.85,-4.25]
 ```
 
