@@ -11,11 +11,14 @@ show_sidebar: false
 I chose to do PID control on the yaw data from the gyroscope (my z axis) to control to robot's orientation. I rotated in 18 degree increments to get an even 20 measurements. I actually got 21 data points because I collected for both 0 degrees and 360 degrees. I passed a PWM value of 130 to the motor drivers for turning. In lab 6 I determined the deadband for spinning from rest about the robot's axis was below a PWM value of 102, but I wasn't able to get the robot to turn reliably at values less than 130.
 
 The yaw calculated from the gyroscope was very close to 
+
 ![Controller img](img/lab9/PID controller graph.png)
+
+![error img](img/lab9/err.png)
 
 upload a video that shows if your robot turns (roughly) on axis.
 
-Given the drift in your sensor, the size and accuracy of your increments, and how reliably your robot turns on axis, reason about the average and maximum error of your map if you were to do an on-axis turn in the middle of a 4x4m square, empty room.
+I set a tolerance such that when the error was less than half a degree the robot would stop and get distance data. Therefore, the angle error was less than 0.5 degrees. The axis of rotation might move 2.5cm to 5cm. So for a single distance measurement, error = 5cm * cos(0.5 deg) which is essentially 5cm.
 
 ### Read Out Distances
 Consider whether your robot behavior is reliable enough to assume that the readings are spaced equally in angular space, or if you are better off trusting the orientation from integrated gyroscope values.
