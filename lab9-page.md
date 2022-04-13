@@ -16,6 +16,7 @@ The calculated yaw from the gyroscope data was very close to the given set point
 
 ![error img](img/lab9/err.png)
 
+I didn't get a video in the lab, but I did do a test at home. It worked just as well at home as it did in the lab.
 upload a video that shows if your robot turns (roughly) on axis.
 
 I set a tolerance such that when the error was less than half a degree the robot would stop and get distance data. Therefore, the angle error was less than 0.5 degrees. The axis of rotation might move 2.5cm to 5cm. So for a single distance measurement, error = 5cm * cos(0.5 deg) which is essentially 5cm.
@@ -87,6 +88,8 @@ To correct for the angular offset I subtracted 20 degrees from the orientation o
 
 Improved to:
 ![pt5 img](img/lab9/fixed wall guess.png)
+
+I think the map looks pretty good!
 
 ```
 Start:
