@@ -31,7 +31,7 @@ The polar graphs do match up with the expected map, but it seems there is a slig
 ![pt1 img](img/lab9/pt1.png)
 
 ### (5,3)
-![pt2 img](img/lab9/pt3.png)
+![pt2 img](img/lab9/pt2.png)
 
 ### (-3,-2)
 ![pt3 img](img/lab9/pt3.png)
