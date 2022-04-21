@@ -7,10 +7,9 @@ show_sidebar: false
 
 **Date: April 2022**
 
-The simulator features a map of our classroom and a virtual robot is in the map. The linear and angular velocities of the virtual robot can be changed, and the distance from the a sensor on the front of the virtual robot can be collected. These functionalities are controlled with the Commander class.
+The simulator features a map of our classroom with a virtual robot in the map. The linear and angular velocities of the virtual robot can be changed, and the distance from a sensor on the front of the virtual robot can be collected. These functionalities are controlled with the Commander class.
 
 ### Open Loop Control
-Plot and analyze the ground truth and odometry of the robot.
 
 {% include youtube.html video="XQIwzdv9bwU" %}
 
