@@ -145,7 +145,11 @@ for t in range(0, traj.total_time_steps):
     loc.print_update_stats(plot_data=True)
 ```
 
-VIDEO
+### The Bayes Filter in Action
+I sped the by 4 times so you don't have to watch a 2 minute video.
 
-STATs
+{% include youtube.html video="lLkfZRtz12M" %}
+
+
+Trajectory stats
   
