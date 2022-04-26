@@ -151,5 +151,8 @@ I sped the by 4 times so you don't have to watch a 2 minute video.
 {% include youtube.html video="lLkfZRtz12M" %}
 
 
-Trajectory stats
+### The Data
+
+![Pose data](img/lab11/Data Table img.png)
+
   
