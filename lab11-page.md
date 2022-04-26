@@ -7,7 +7,6 @@ show_sidebar: false
 
 **Date: April 20, 2022**
 
-Add in my code explanations
 
 ### Compute Control
 This function determines the translation and preceding and succeeding about-axis rotations that match the movement from a previous pose to the current pose. The change in x and y position where used the calculate the angle at which the overall motion occured. The two rotations were determined by finding the difference between the given initial and final angular orientations. The rotations were normalized to be inbetween -180 and 180 degrees. The translation was calculated as the distance between the (x,y) points. The right triangle relation and the previously calculated dx and dy were used the hypotenuse of the triangle which is the translation distance.
