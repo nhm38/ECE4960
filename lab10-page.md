@@ -26,17 +26,10 @@ The controls are not perfectly repeatable and the exact same shape is not execut
 
 
 ### Closed Loop Control
-Design a simple controller in your Jupyter notebook to perform a closed-loop obstacle avoidance.
-By how much should the virtual robot turn when it is close to an obstacle?
-At what linear speed should the virtual robot move to minimize/prevent collisions? Can you make it go faster?
-How close can the virtual robot get to an obstacle without colliding?
-Does your obstacle avoidance code always work? If not, what can you do to minimize crashes or (may be) prevent them completely?
-
-
 {% include youtube.html video="_n7_P5aUJ-Y" %}
 
 
-To avoid obstacles, I have the robot first backup when it senses it's a certain distance from a wall then turn 60 degrees. When the robot at 0.5 m/s and tries to detect wall from 0.1 m out, the robot crashes.
+To avoid obstacles, I have the robot first backup when it senses it's a certain distance from a wall then turn 60 degrees. When the robot moves at 0.5 m/s and tries to detect wall from 0.1 m out, the robot crashes. I found that increasing the detected distance to  0.25 m allowed the robot to act accordingly when it was moving at 0.5 m/s.
 
 
 {% include youtube.html video="WMkLFR6fe2o" %}
