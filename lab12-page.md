@@ -78,7 +78,7 @@ def perform_observation_loop(self, rot_vel=120):
 
 
 ### Results
-I think my motors are degrading and the left motor is degrading faster than the right motor, probably due to build up of particles on the motor and in the components. The left side wheel  did ot move at exactly the same rate as the right side wheel, so I increase previously successful calibration factor. I also increased the base turning speed and the mapping worked much better. It still wasn't a perfectly smooth and symmetrical turn, but it worked adequately for this localizing.
+I think my motors are degrading, and the left motor is degrading faster than the right motor, probably due to build up of particles on the motor and in the components. The left side wheel did not move at exactly the same rate as the right side wheel, so I increase the previously successful calibration factor. I also increased the base turning speed and then the mapping worked much better. It still wasn't a perfectly smooth and symmetrical turn, but it worked adequately well for localizing.
     
 I placed the robot on each of the four marked poses. After running the update step of the Bayes Filter using the sensor measurement data to localize with a uniform prior on the pose, these are the results.
 
