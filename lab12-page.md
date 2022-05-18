@@ -82,17 +82,6 @@ I think my motors are degrading and the left motor is degrading faster than the 
     
 I placed the robot on each of the four marked poses. After running the update step of the Bayes Filter using the sensor measurement data to localize with a uniform prior on the pose, these are the results.
 
-Qs:
-How close is the localized pose w.r.t to the ground truth?
-
-Visualize your results.
-
-Discuss your results.
-
-Repeat for every marked position.
-
-Does the robot localize better in certain poses? If so, why?
-
 #### (-3 ft, -2 ft) // (-0.914 m, 0.610 m)
 Update Step Time: 0.005 secs
 
@@ -116,12 +105,15 @@ Update Step Time: 0.011 secs
 
 Belief: (-1.219, 0.000, -30.000)
 
-![Plot 3](img/lab12/plot_5_-3.png)
+This location was extremely hard for me to localize. I consistently got a belief of (-4 ft, 0 ft) which is incorrect. I can see how these to spots would have similar measurements at different orientations because of the features of the map. I tried starting at different orientations (0, 180, etc.) at (5 ft, -3 ft), but I continued to get a belief of (-4 ft, 0 ft). I wanted to do a test is a similar location to see if the issue persisted.
 
+![Plot 3](img/lab12/plot_5_-3.png)
 
 Update Step Time: 0.015 secs
 
 Belief: (1.219, -0.914, -10.000)
+
+I moved the robot to the left one square to it was starting at (4 ft, -3 ft) facing the wall (angular orientation of 0 degrees. The robot had to trouble localizing in the spot. This spot is more unique with the configuration of the obstacles, so it was able to localize better in the pose. As seen before, there is small but reasonable error in the angular orientation.
 
 ![Plot 4](img/lab12/plot_4_-3.png)
 
