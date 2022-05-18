@@ -82,7 +82,7 @@ I think my motors are degrading, and the left motor is degrading faster than the
     
 I placed the robot on each of the four marked poses. After running the update step of the Bayes Filter using the sensor measurement data to localize with a uniform prior on the pose, these are the results.
 
-#### (-3 ft, -2 ft) // (-0.914 m, 0.610 m)
+#### (-3 ft, -2 ft) // (-0.914 m, -0.610 m)
 Update Step Time: 0.005 secs
 
 Belief: (-0.914, -0.610, 170.000)
@@ -125,4 +125,7 @@ Belief: (1.524, 0.914, -10.000)
 I started my robot facing the wall with, but that meant this time, the angular orientation was 0 degrees. Again, my x and y belief matched the actual position and there was a small but reasonable error in the angular orientation belief. This was a similar difficulty to (0 ft, 3 ft) for the same reasons. This corner is not super unique.
 
 ![Plot 5](img/lab12/plot_5_3.png)
+
+
+Overall, my localization worked well, and I was able to get good results with the real robot. It was cool to see what we did in simulation work well with the physical system.
 
