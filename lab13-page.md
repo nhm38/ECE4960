@@ -93,7 +93,7 @@ The sampling rate was too slow when also doing PID contorl on the angular orient
 In previous labs my system functioned fine moving in a straight line by just multiplying the left wheel speed by a calibration factor. To speed up the loop execution speed I eliminated the PID control on angular orientation and only did position control with respect to the ToF data. With this method I was able to stop more accurately and was able to travel distances I specified.
 
 ### Path Plan
-I wrote a python scripts to calculate all the distances and angles between the waypoints. It converted the units appropriatly so I could pass parameters to the Artemis via bluetooth and not have to waste time converting specifically the distance unit onbaord to comapre to the ToF data and slow down the loop.
+I wrote a python script to calculate all the distances and angles between the waypoints. It also converted the units appropriatly so I could pass parameters to the Artemis via bluetooth and not have to waste time converting units onbaord. I decided to start with the robot oriented at 0 degrees. Then the robot will turn so its facing backwards and drive in reverse towards the first waypoint becuase the walls in the corner are closer and this method is more reliable.
 
 ![Map & Plan](img/lab13/Path Plan.png)
 
