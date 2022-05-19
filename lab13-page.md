@@ -10,11 +10,11 @@ show_sidebar: false
 So far in this class, I have implemented PID feedback control, mapping, and localization algorithms. The goal of this lab is to use whatever bits and pieces of knowledge and the skills learned in this class to get the real robot to visit 9 waypoints. 
 
 ### First Attempt: Dead Reckoning 
-Towards the beginning of this class we talked about dead reckoning in lecture. Dead reckoning is the process of estimating your current position by using a previous position and incorporating velocity and/or angular orientation data over time. Therefore, the IMU sensor is potentially a good tool to perform dead reckoning. I wanted to try to use dead reckoning with the accelerometer even though in class we talked about its downsides because we hadn't implemented it in class yet. Dead reckoning is extremely suseptible to accumulation errors especially with a noisy sensor like the accelerometer. I definitely saw this issue pop up and this ultimately was the reason I decided to move onto a new method for executing the path.
+Towards the beginning of this class we talked about dead reckoning in lecture. Dead reckoning is the process of estimating your current position by using a previous position and incorporating velocity and/or angular orientation data over time. Therefore, the IMU sensor is potentially a good tool to perform dead reckoning. I wanted to try to use dead reckoning with the accelerometer even though in class we talked about its drawbacks, because we hadn't implemented it in class yet. Dead reckoning is extremely suseptible to accumulation errors especially with a noisy sensor like the accelerometer. I definitely saw this issue pop up and this ultimately was the reason I decided to move onto a new method for executing the path.
 
 My original idea was to use PID feedback control on the orientation for making turns and ensuring I was driving in a straight line (not drifting). Since the robot would be moving in a straight line, I thought doing dead reckoning would have less accuracy issues than doing dead reckoning along a curved path.
 
-The following are parts of the code I wrote to compute the dead reckoning. I essentailly integrate the acceleration to get the velocity and then integrate the velocity to get the position.
+The following are parts of the code I wrote to compute the dead reckoning. I essentailly integrate the acceleration to get the velocity and then integrate the velocity to get the position. I also implemented a low pass filter on the acceleration.
 
 ```
 double acc_LPF[] = {0, 0};
@@ -85,7 +85,7 @@ Ultimately, I could not overcome the sensor noise and error accumulation. I prob
 
 
 ### Second Attempt: Feedback Control with PID
-My PID controller worked super well in previous labs. It generally reliable and super fast, especially the angular orientation control.
+My PID controller worked super well in previous labs. It generally reliable and super fast, especially the angular orientation control. See Lab 6 for more details on tuning the PID controller for orientation control.
 
 The sampling rate was too slow when also doing PID contorl on the angular orientation in the loop, so I wasn't able to get ToF data frequently enough to stop at an accurate position.
 
@@ -93,6 +93,7 @@ The sampling rate was too slow when also doing PID contorl on the angular orient
 In previous labs my system functioned fine moving in a straight line by just multiplying the left wheel speed by a calibration factor. To speed up the loop execution speed I eliminated the PID control on angular orientation and only did position control with respect to the ToF data. With this method I was able to stop more accurately and was able to travel distances I specified.
 
 ### Path Plan
+I wrote a python scripts to calculate all the distances and angles between the waypoints. It converted the units appropriatly so I could pass parameters to the Artemis via bluetooth and not have to waste time converting specifically the distance unit onbaord to comapre to the ToF data and slow down the loop.
 
 ![Map & Plan](img/lab13/Path Plan.png)
 
