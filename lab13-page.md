@@ -45,6 +45,7 @@ vel[n - 1] = vel[n];
 pos[n - 1] = pos[n];
 ```
 
+The blue curve is **acceleration**, the red curve is **velocity**, and the greed curve is **position**.
 
 ![Sad DR](img/lab13/DeadReckoning.png)
 
@@ -63,7 +64,15 @@ ICM_20948_Status_e accDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Acc, t
 ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, true);
 ```
 
-Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to workd, but I was really interested in the implementation. I think we a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position.
+Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I pushed the robot forward, si it did have some positive velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I sent the velocity equal to zero.
+
+```
+if ( abs(vel[n] - vel[n - 1]) < 0.001) {
+  vel[n] = 0;
+}
+```
+
+Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to work, but I was really interested in the implementation. I think with a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position.
 
 
 ### Second Attempt: Feedback Control with PID
