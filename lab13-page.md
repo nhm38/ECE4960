@@ -10,11 +10,11 @@ show_sidebar: false
 So far in this class, I have implemented PID feedback control, mapping, and localization algorithms. The goal of this lab is to use whatever bits and pieces of knowledge and the skills learned in this class to get the real robot to visit 9 waypoints. 
 
 ### First Attempt: Dead Reckoning 
-Towards the beginning of this class we talked about dead reckoning in lecture. Dead reckoning is the process of estimating your current position by using a previous position and incorporating velocity and/or angular orientation data over time. Therefore, the IMU sensors are potentially a good tool to perform dead reckoning. I wanted to try to use dead reckoning with the accelerometer even though in class we talked about the downsides, because we hadn't implemented it in class yet. Dead reckoning is extremely suseptible to accumulation errors especially with a noisy sensor like the accelerometer. I definitely saw this issue pop up and this ultimately was the reason I decided to move onto a new method for executing the path.
+Towards the beginning of this class we talked about dead reckoning in lecture. Dead reckoning is the process of estimating your current position by using a previous position and incorporating velocity and/or angular orientation data over time. Therefore, the IMU sensor is potentially a good tool to perform dead reckoning. I wanted to try to use dead reckoning with the accelerometer even though in class we talked about its downsides because we hadn't implemented it in class yet. Dead reckoning is extremely suseptible to accumulation errors especially with a noisy sensor like the accelerometer. I definitely saw this issue pop up and this ultimately was the reason I decided to move onto a new method for executing the path.
 
-My original idea was to use PID feedback control on the orientation for making turns and ensuring I was driving in a straight line (not drifting). Since the robot would be moving in a straight line, I though doing dead reckoning would have less accuracy issues than doing dead reckoning along a curved path.
+My original idea was to use PID feedback control on the orientation for making turns and ensuring I was driving in a straight line (not drifting). Since the robot would be moving in a straight line, I thought doing dead reckoning would have less accuracy issues than doing dead reckoning along a curved path.
 
-The following are parts of the code I wrote to compute the dead reckoning. I basically integrate the acceleration once to get the velocity and then integrate the velocity to get the position.
+The following are parts of the code I wrote to compute the dead reckoning. I essentailly integrate the acceleration to get the velocity and then integrate the velocity to get the position.
 
 ```
 double acc_LPF[] = {0, 0};
@@ -23,7 +23,7 @@ double pos[] = {0, 0};
 const int n = 1;
 
 
-dt = (micros() - prev_t) / 1000000.0; //Nyquist freq = half the sampling freq
+dt = (micros() - prev_t) / 1000000.0;
 prev_t = micros();
 
 
@@ -49,7 +49,9 @@ The blue curve is **acceleration**, the red curve is **velocity**, and the greed
 
 ![Sad DR](img/lab13/DeadReckoning.png)
 
-I also set up the sensor's built-in digital low pass filter to see if that would improve the data. I messed abournd with some of the settings and saw some improvemnts in the acceleration data but nothing too significant.
+I pushed the robot forward once, pulled the robot backwards once, and then pushed the robot forward again. You can see the 3 bumps in the velocity data and the corresponding changes in the acceleration data.
+
+I set up the sensor's built-in digital low pass filter to see if that would improve the data. I messed abournd with some of the settings and saw some improvemnts in the acceleration data but nothing too significant.
 
 ```
 ICM_20948_dlpcfg_t myDLPcfg;    // Configuration structure for the desired sensors (accel & gyro)
@@ -64,7 +66,7 @@ ICM_20948_Status_e accDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Acc, t
 ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, true);
 ```
 
-Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I pushed the robot forward, so it did have some positive velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I set the velocity equal to zero.
+Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I move the robot, so it did have some non-zero velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I set the velocity equal to zero.
 
 ```
 if ( abs(vel[n] - vel[n - 1]) <= 0.001) {
