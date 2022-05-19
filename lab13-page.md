@@ -14,9 +14,7 @@ Towards the beginning of this class we talked about dead reckoning in lecture. D
 
 My original idea was to use PID feedback control on the orientation for making turns and ensuring I was driving in a straight line (not drifting). Since the robot would be moving in a straight line, I though doing dead reckoning would have less accuracy issues than doing dead reckoning along a curved path.
 
-
-![Sad DR](img/lab13/DeadReckoning.png)
-
+The following are parts of the code I wrote to compute the dead reckoning. I basically integrate the acceleration once to get the velocity and then integrate the velocity to get the position.
 
 ```
 double acc_LPF[] = {0, 0};
@@ -25,12 +23,15 @@ double pos[] = {0, 0};
 const int n = 1;
 
 
+dt = (micros() - prev_t) / 1000000.0; //Nyquist freq = half the sampling freq
+prev_t = micros();
+
+
 acc = (myICM.accX() / 1000 * 9.807); //convert units from mg > g > m/s^2
 
 // Low Pass Filter Accelertation
 const float a = 0.15;
 acc_LPF[n] = a * acc + (1 - a) * acc_LPF[n - 1];
-acc_LPF[n - 1] = acc_LPF[n];
 
 // Velocity
 vel[n] = vel[n - 1] + acc_LPF[n - 1] * dt;
@@ -44,7 +45,10 @@ vel[n - 1] = vel[n];
 pos[n - 1] = pos[n];
 ```
 
-I also set up the built in digital low pass filter to see if that would improve the data. I messed abournd with some of the settings and saw some improvemnts in the acceleration data but nothing too significant.
+
+![Sad DR](img/lab13/DeadReckoning.png)
+
+I also set up the sensor's built-in digital low pass filter to see if that would improve the data. I messed abournd with some of the settings and saw some improvemnts in the acceleration data but nothing too significant.
 
 ```
 ICM_20948_dlpcfg_t myDLPcfg;    // Configuration structure for the desired sensors (accel & gyro)
@@ -59,7 +63,7 @@ ICM_20948_Status_e accDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Acc, t
 ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, true);
 ```
 
-Ultimately, I could not overcome the sensor noise and error accumulation.
+Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to workd, but I was really interested in the implementation. I think we a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position.
 
 
 ### Second Attempt: Feedback Control with PID
