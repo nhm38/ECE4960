@@ -109,8 +109,13 @@ Update Step Time: 0.011 secs
 
 Belief: (-1.219, 0.000, -30.000)
 
-The x and y position belief of (0 ft, 0 ft) was correct! As seen in Lab 12 as well, there is small but reasonable error in the angular orientation. I was facing downward in the map which would be 270 degrees or -90 degrees.
+The x and y position belief of (0 ft, 0 ft) was correct! As seen in Lab 12, there is small but reasonable error in the angular orientation. I was facing downward in the map which would be 270 degrees or -90 degrees.
 
 ![Plot 3](img/lab12/plot_5_-3.png)
+
+### Discussion
+Please carefully document how well your solution, and all parts of it, works. This may include a brief introduction to the capabilities of your system, relevant code snippets, and a flowchart diagram of what processes (offboard/onboard) run when; how long each take to execute and how reliable/accurate the outcome is.
+
+Note that these waypoints are increasingly difficult, and you may not be able to execute the full length of waypoints or hit all of them accurately. Quantify and discuss how well your solution works (and why it works better in some situations). And of course, upload a video of your best run; please be sure to include both planning and execution steps (e.g. by combining screen capture and live video of the robot).
 
 
