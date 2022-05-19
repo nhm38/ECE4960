@@ -64,10 +64,10 @@ ICM_20948_Status_e accDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Acc, t
 ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, true);
 ```
 
-Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I pushed the robot forward, si it did have some positive velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I sent the velocity equal to zero.
+Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I pushed the robot forward, so it did have some positive velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I set the velocity equal to zero.
 
 ```
-if ( abs(vel[n] - vel[n - 1]) < 0.001) {
+if ( abs(vel[n] - vel[n - 1]) <= 0.001) {
   vel[n] = 0;
 }
 ```
@@ -77,6 +77,8 @@ Ultimately, I could not overcome the sensor noise and error accumulation. I prob
 
 ### Second Attempt: Feedback Control with PID
 My PID controller worked super well in previous labs. It generally reliable and super fast, especially the angular orientation control.
+
+The sampling rate was too slow when also doing PID contorl on the angular orientation in the loop, so I wasn't able to get ToF data frequently enough to stop at an accurate position.
 
 ### Third Attempt: Feedback Control with PID (no angular control for straight line movement)
 
