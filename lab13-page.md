@@ -45,13 +45,13 @@ vel[n - 1] = vel[n];
 pos[n - 1] = pos[n];
 ```
 
-The blue curve is **acceleration**, the red curve is **velocity**, and the greed curve is **position**.
+The blue curve is **acceleration**, the red curve is **velocity**, and the greed curve is **position**. The velocity and position curves are in units of cm/s and cm for ease of visualization.
 
 ![Sad DR](img/lab13/DeadReckoning.png)
 
 I pushed the robot forward once, pulled the robot backwards once, and then pushed the robot forward again. You can see the 3 bumps in the velocity data and the corresponding changes in the acceleration data.
 
-I set up the sensor's built-in digital low pass filter to see if that would improve the data. I messed abournd with some of the settings and saw some improvemnts in the acceleration data but nothing too significant.
+I set up the sensor's built-in digital low pass filter to see if that would improve the data. I messed abournd with some of the settings and saw some improvemnts in the acceleration data but nothing too significant. The acceleration curves look smoother, but the velocity curve (and postion curve) are still accumulating a lot of error.
 
 ```
 ICM_20948_dlpcfg_t myDLPcfg;    // Configuration structure for the desired sensors (accel & gyro)
@@ -66,6 +66,9 @@ ICM_20948_Status_e accDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Acc, t
 ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, true);
 ```
 
+![Sad DR](img/lab13/PostDLPF.png)
+
+
 Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I move the robot, so it did have some non-zero velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I set the velocity equal to zero.
 
 ```
@@ -73,6 +76,10 @@ if ( abs(vel[n] - vel[n - 1]) <= 0.001) {
   vel[n] = 0;
 }
 ```
+This didn't end up working as intended. When the acceleration starts to decrease, so the peak of the velocity bumps, the velocity is small enough to be in the range of the slope. This causes weird behaviors.
+
+![Sad DR](img/lab13/PostVelFix.png)
+
 
 Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to work, but I was really interested in the implementation. I think with a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position.
 
