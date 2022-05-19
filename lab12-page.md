@@ -113,7 +113,7 @@ Update Step Time: 0.015 secs
 
 Belief: (1.219, -0.914, -10.000)
 
-I moved the robot to the left one square to it was starting at (4 ft, -3 ft) facing the wall (angular orientation of 0 degrees. The robot had to trouble localizing in the spot. This spot is more unique with the configuration of the obstacles, so it was able to localize better in the pose. As seen before, there is small but reasonable error in the angular orientation.
+I moved the robot to the left one square so it was starting at (4 ft, -3 ft) facing the wall (angular orientation of 0 degrees. The robot had no trouble localizing in the spot. This spot is more unique with the configuration of the obstacles, so it was able to localize better in the pose. As seen before, there is small but reasonable error in the angular orientation.
 
 ![Plot 4](img/lab12/plot_4_-3.png)
 
