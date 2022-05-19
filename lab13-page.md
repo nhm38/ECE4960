@@ -12,10 +12,11 @@ So far in this class, I have implemented PID feedback control, mapping, and loca
 ### First Attempt: Dead Reckoning 
 Towards the beginning of this class we talked about dead reckoning in lecture. Dead reckoning is the process of estimating your current position by using a previous position and incorporating velocity and/or angular orientation data over time. Therefore, the IMU sensors are potentially a good tool to perform dead reckoning. I wanted to try to use dead reckoning with the accelerometer even though in class we talked about the downsides, because we hadn't implemented it in class yet. Dead reckoning is extremely suseptible to accumulation errors especially with a noisy sensor like the accelerometer. I definitely saw this issue pop up and this ultimately was the reason I decided to move onto a new method for executing the path.
 
-My original idea was to use PID feedback control on the orientation for making turns and ensuring I was driving in a straight line (not drifting). 
+My original idea was to use PID feedback control on the orientation for making turns and ensuring I was driving in a straight line (not drifting). Since the robot would be moving in a straight line, I though doing dead reckoning would have less accuracy issues than doing dead reckoning along a curved path.
 
 
 ![Sad DR](img/lab13/DeadReckoning.png)
+
 
 ```
 double acc_LPF[] = {0, 0};
