@@ -97,4 +97,20 @@ I wrote a python scripts to calculate all the distances and angles between the w
 
 ![Map & Plan](img/lab13/Path Plan.png)
 
-### Easy to implement Localization as in Lab 12. I wanted to focus more on Navigation. 
+### The Run
+*video*
+
+*discussion of performance*
+
+### Localization
+I was able to get the locaization to work well in Lab 12, so I wanted to focus more on executing the navigation in this lab. It would be very simply to implement localization at every waypoint by just calling the same functions I wrote as in Lab 12. I did perfrom Localization at the last waypoint (0,0) to check that I ended up in the correct place. 
+
+Update Step Time: 0.011 secs
+
+Belief: (-1.219, 0.000, -30.000)
+
+The x and y position belief of (0 ft, 0 ft) was correct! As seen in Lab 12 as well, there is small but reasonable error in the angular orientation. I was facing downward in the map which would be 270 degrees or -90 degrees.
+
+![Plot 3](img/lab12/plot_5_-3.png)
+
+
