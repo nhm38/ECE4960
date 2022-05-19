@@ -69,7 +69,7 @@ ICM_20948_Status_e gyrDLPEnableStat = myICM.enableDLPF(ICM_20948_Internal_Gyr, t
 ![Sad DR](img/lab13/PostDLPF.png)
 
 
-Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the 3 bumps in the graph were I move the robot, so it did have some non-zero velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I set the velocity equal to zero.
+Another fix I tried was to just get rid of the steadily increasing part of the velocity curve. You can see the bumps in the previous two graph were I move the robot, so it did have some non-zero velocity. I estimated the slope of the non-peaked portions of the graph. Then if the change in velocity was less than or equivalent to the slope I set the velocity equal to zero.
 
 ```
 if ( abs(vel[n] - vel[n - 1]) <= 0.001) {
@@ -81,7 +81,7 @@ This didn't end up working as intended. When the acceleration starts to decrease
 ![Sad DR](img/lab13/PostVelFix.png)
 
 
-Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to work, but I was really interested in the implementation. I think with a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position.
+Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to work, but I was really interested in the implementation. I think with a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position in this type of situation.
 
 
 ### Second Attempt: Feedback Control with PID
