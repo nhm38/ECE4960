@@ -83,6 +83,7 @@ My PID controller worked super well in previous labs. It generally reliable and 
 The sampling rate was too slow when also doing PID contorl on the angular orientation in the loop, so I wasn't able to get ToF data frequently enough to stop at an accurate position.
 
 ### Third Attempt: Feedback Control with PID (no angular control for straight line movement)
+In previous labs my system functioned fine moving in a straight line by just multiplying the left wheel speed by a calibration factor. To speed up the loop execution speed I eliminated the PID control on angular orientation and only did position control with respect to the ToF data. With this method I was able to stop more accurately and was able to travel distances I specified.
 
 ### Path Plan
 
