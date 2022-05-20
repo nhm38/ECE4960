@@ -85,9 +85,9 @@ Ultimately, I could not overcome the sensor noise and error accumulation. I prob
 
 
 ### Second Attempt: Feedback Control with PID & Orientation Control
-My PID controller worked super well in previous labs. It is generally reliable and fast, especially the angular orientation control. See Lab 6 for more details on tuning the PID controller for orientation control. However, the sampling rate was too slow when also doing PID control on the angular orientation for driving in a straight line, so I wasn't able to get ToF data frequently enough to stop at an accurate position. I would overshoot the distance I wanted to travel and continue to oscillate around the point. 
+My PID controller worked super well in previous labs. It's generally reliable and fast, especially the angular orientation control. (See Lab 6 for more details on tuning the PID controller for orientation control.) However, the sampling rate was too slow when also doing PID control on the angular orientation for driving in a straight line, so I wasn't able to get ToF data frequently enough to stop at an accurate position. I would overshoot the distance I wanted to travel and continue to oscillate around the point. 
 
-To control the robot’s position, I first find the starting point distance reading. I continue to collect ToF data and calculate the difference between the most recent ToF data and the starting point. I then use the specified distance sent via bluetooth to find the error.
+To control the robot’s position, I first find the starting point distance reading. I continue to collect ToF data and calculate the difference between the most recent ToF data and the starting point to find the distance traveled. I then use the specified distance sent via bluetooth to find the error.
 
 Another issue I had was that the first ToF data point I collected would often be very inaccurate. To fix this, I ping the ToF and collect distance data, but then don't use that data point for control purposes. I collect another data point to actually use as my start distance. As seen below, I wrote a function getTOF() to help streamline my code.
 
