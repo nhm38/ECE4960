@@ -95,6 +95,79 @@ I wrote a python script to calculate all the distances and angles between the wa
 
 ![Map & Plan](img/lab13/Path Plan.png)
 
+I translated this path plan into a series of commands for the robots to follow. The code also includes the initialization of the objects need for the plotter and localiztion. I had to put in time.sleep() delays in the python script to match the timing in the Artemis code. To figure out the the necessary time delays I performed a test on the spin rate of the robot, given by the gyroscope data is degrees per second (DPS).  I did the test on the maximum angle the robot would have to turn in the map which is 135 degrees, because
+
+Therefore, I alloted 2 seconds for turns and 5 seconds for the dribing portions.
+
+```
+# Initialize RealRobot with a Commander object to communicate with the plotter process
+# and the ArtemisBLEController object to communicate with the real robot
+robot = RealRobot(cmdr, ble)
+# Initialize mapper
+# Requires a VirtualRobot object as a parameter
+mapper = Mapper(robot)
+
+# Initialize your BaseLocalization object
+# Requires a RealRobot object and a Mapper object as parameters
+loc = Localization(robot, mapper)
+
+## Plot Map
+cmdr.plot_map()
+# Reset Plots
+cmdr.reset_plotter()
+
+# Init Uniform Belief
+loc.init_grid_beliefs()
+
+--- VISIT WAYPOINTS ---
+
+# pt1 --> pt3
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|-135")
+time.sleep(2)
+ble.send_command(CMD.REVERSE, "45|862.1")
+time.sleep(5)
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|135")
+time.sleep(2)
+ble.send_command(CMD.DRIVE, "45|914.4")
+time.sleep(5)
+
+# pt3 --> pt5
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|-63.43")
+time.sleep(2)
+ble.send_command(CMD.DRIVE, "45|681.6")
+time.sleep(5)
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|63.43")
+time.sleep(2)
+ble.send_command(CMD.DRIVE, "45|914.4")
+time.sleep(5)
+
+# pt5 --> pt7
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|90")
+time.sleep(2)
+ble.send_command(CMD.DRIVE, "45|1828.8") # Combine these two segments for time/speed
+time.sleep(5)
+
+# pt7 --> pt8
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|90")
+time.sleep(2)
+ble.send_command(CMD.DRIVE, "45|1524")
+time.sleep(5)
+ 
+# pt8 --> pt9
+ble.send_command(CMD.TURN, "2.5|0.3|0.3|90")
+time.sleep(2)
+ble.send_command(CMD.DRIVE, "45|914.4")
+time.sleep(5)
+-----------------------
+
+# Get Observation Data by executing a 360 degree rotation motion
+loc.get_observation_data()
+
+# Run Update Step
+loc.update_step()
+loc.plot_update_step_data(plot_data=True)
+```
+
 ### The Run
 *video*
 
