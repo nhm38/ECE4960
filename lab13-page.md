@@ -84,12 +84,10 @@ This didn't end up working as intended. When the acceleration starts to decrease
 Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to work, but I was really interested in the implementation. I think with a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position in this type of situation.
 
 
-### Second Attempt: Feedback Control with PID
-My PID controller worked super well in previous labs. It generally reliable and super fast, especially the angular orientation control. See Lab 6 for more details on tuning the PID controller for orientation control.
+### Second Attempt: Feedback Control with PID & Orientation Control
+My PID controller worked super well in previous labs. It was generally reliable and fast, especially the angular orientation control. See Lab 6 for more details on tuning the PID controller for orientation control. However, the sampling rate of the ToF data was too slow when also doing PID contorl on the angular orientation in the loop, so I wasn't able to get ToF data frequently enough to stop at an accurate position. I wanted to do angular orientation control so the robot would travel in a straight line. 
 
-The sampling rate was too slow when also doing PID contorl on the angular orientation in the loop, so I wasn't able to get ToF data frequently enough to stop at an accurate position.
-
-### Third Attempt: Feedback Control with PID (no angular control for straight line movement)
+### Third Attempt: Feedback Control with just PID
 In previous labs my system functioned fine moving in a straight line by just multiplying the left wheel speed by a calibration factor. To speed up the loop execution speed I eliminated the PID control on angular orientation and only did position control with respect to the ToF data. With this method I was able to stop more accurately and was able to travel distances I specified.
 
 ### Path Plan
@@ -103,15 +101,17 @@ I wrote a python script to calculate all the distances and angles between the wa
 *discussion of performance*
 
 ### Localization
-I was able to get the locaization to work well in Lab 12, so I wanted to focus more on executing the navigation in this lab. It would be very simply to implement localization at every waypoint by just calling the same functions I wrote as in Lab 12. I did perfrom Localization at the last waypoint (0,0) to check that I ended up in the correct place. 
+I was able to get the locaization to work well in Lab 12, so I wanted to focus more on executing the navigation in this lab. It would be very simply to implement localization at every waypoint by just calling the same functions I wrote as in Lab 12. That localization data could then be used to inform the controls to adjust the robot's position. I did perfrom Localization at the last waypoint (0,0) to check that I ended up in the correct place. 
 
-Update Step Time: 0.011 secs
+Update Step Time: 0.023 secs
 
-Belief: (-1.219, 0.000, -30.000)
+Belief: (0.000, 0.000, -90.000)
 
-The x and y position belief of (0 ft, 0 ft) was correct! As seen in Lab 12, there is small but reasonable error in the angular orientation. I was facing downward in the map which would be 270 degrees or -90 degrees.
+The x, y, and theta belief of (0 ft, 0 ft, -90.000) was correct! I took this localization data from the more precise, second half of the run. In that instance, robot was mostly in (0,0) tile and was facing downward in the map which would be 270 degrees or -90 degrees.
 
-![Plot 3](img/lab12/plot_5_-3.png)
+![Belief](img/lab13/Bel00.png)
+
+![Localization Plot](img/lab13/Plot00.png)
 
 ### Discussion
 Please carefully document how well your solution, and all parts of it, works. This may include a brief introduction to the capabilities of your system, relevant code snippets, and a flowchart diagram of what processes (offboard/onboard) run when; how long each take to execute and how reliable/accurate the outcome is.
