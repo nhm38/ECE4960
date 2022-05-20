@@ -84,7 +84,7 @@ This didn't end up working as intended. When the acceleration starts to decrease
 Ultimately, I could not overcome the sensor noise and error accumulation. I probably shouldn't have spent so much time trying to get this to work, but I was really interested in the implementation. I think with a better IMU sensor and accelerations that were larger and not so breif, it could be possible to effectively implement dead reckoning as a reasonble means to determine position in this type of situation.
 
 
-### Second Attempt: Feedback Control with PID & Orientation Control
+### Second Attempt: Feedback Control with PID & Distance Sensing + Orientation Control
 My PID controller worked super well in previous labs. It's generally reliable and fast, especially the angular orientation control. (See Lab 6 for more details on tuning the PID controller for orientation control.) However, the sampling rate was too slow when also doing PID control on the angular orientation for driving in a straight line, so I wasn't able to get ToF data frequently enough to stop at an accurate position. I would overshoot the distance I wanted to travel and continue to oscillate around the point. 
 
 To control the robot’s position, I first find the starting point distance reading. I continue to collect ToF data and calculate the difference between the most recent ToF data and the starting point to find the distance traveled. I then use the specified distance sent via bluetooth to find the error.
@@ -116,21 +116,21 @@ int getTOF()
 }
 ```
 
-### Third Attempt: Feedback Control with just PID
+### Third Attempt: Feedback Control with PID
 In previous labs my system functioned fine moving in a straight line by just multiplying the left wheel speed by a calibration factor. To speed up the loop execution, I eliminated the PID control on angular orientation and only did closed loop control with the ToF data. With this method I was able to stop more accurately, travel the distances I specified, and drive in a relatively straight line.
 
 To figure out the the necessary time to allow for to execute each command I performed a test on the spin rate of the robot, given by the gyroscope data is degrees per second (DPS). The was mostly a safegaurd against the PID controller causing continuous oscillations in the motion of the robot because of small error values. I did the test on the maximum angle the robot would have to turn in the map which is 135 degreees because that would be the largest set point and would introduce the most error. Each time I call the TURN command, I reset the yaw/angle to zero. So starting at 0 degrees and wanting to be at 135 degrees is a large error and thus leads to a large control input. The PWM/speed passed to the motors will be the largest in this scenario and this is mean we will see the largest DPS values. I found the average DPS was 157.77 deg/s. So it takes 0.86 seconds to perform the greatest angular change in the path plan. 
 
 ![Map & Plan](img/lab13/DPS_plot.png)
 
-The PID controller was pretty aggressive with the turning, so I decreased the proportional gain to reduce the overshoot that is seen the the DPS Test graph. The turning in the actual run-through had less overshoot. I did a similar test with the speed of the robot and determined 5 seconds was enough time to complete the maximum necessary distances. Since I reduced the proportional gain, I alloted 2 seconds for turns and 5 seconds for the driving portions.
+The PID controller was pretty aggressive with the turning, so I decreased the proportional gain to reduce the overshoot that is seen the the DPS Test graph. The turning in the actual run-through had less overshoot. I did a similar test with the speed of the robot and determined 5 seconds was enough time to complete the maximum necessary distances. Since I reduced the proportional gain, I allotted 2 seconds for turns and 5 seconds for the driving portions.
 
 ### Path Plan
 I wrote a python script to calculate all the distances and angles between the waypoints. It also converted the units appropriatly so I could pass parameters to the Artemis via bluetooth and not have to waste time converting units onbaord. I decided to start with the robot oriented at 0 degrees. Then the robot will turn so its facing backwards and drive in reverse towards the first waypoint becuase the walls in the corner are closer and this method is more reliable.
 
 ![Map & Plan](img/lab13/Path Plan.png)
 
-I translated this path plan into a series of commands for the robots to follow. The code also includes the initialization of the objects need for the plotter and localiztion. I had to put in time.sleep() delays in the python script to match the timing in the Artemis code. Therefore, I alloted 2 seconds for turns and 5 seconds for the driving portions.
+I translated this path plan into a series of commands for the robots to follow. The code also includes the initialization of the objects need for the plotter and localiztion. I had to put in time.sleep() delays in the python script to match the timing in the Artemis code. As before, I allotted 2 seconds for turns and 5 seconds for the driving portions.
 
 ```
 # Initialize RealRobot with a Commander object to communicate with the plotter process
