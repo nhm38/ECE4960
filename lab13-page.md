@@ -89,13 +89,12 @@ My PID controller worked super well in previous labs. It's generally reliable an
 
 To control the robot’s position, I first find the starting point distance reading. I continue to collect ToF data and calculate the difference between the most recent ToF data and the starting point to find the distance traveled. I then use the specified distance sent via bluetooth to find the error.
 
-Another issue I had was that the first ToF data point I collected would often be very inaccurate. To fix this, I ping the ToF and collect distance data, but then don't use that data point for control purposes. I collect another data point to actually use as my start distance. As seen below, I wrote a function getTOF() to help streamline my code.
+Another issue I had was that the first ToF data point I collected would often be very inaccurate. To fix this, I ping the ToF and collect distance data, but then don't use that data point for control purposes. I collect another data point to actually use as my starting distance. As seen below, I wrote a function getTOF() to help streamline my code. It handles all the methods to correctly use the sensor and returns the distance in millimeters.
 
 ```
 // Get ToF Data to find Starting Point
 tofcheck = getTOF();
-
-start_pt = getTOF();
+start_pt = getTOF(); // actually use this data
 
 
 // Function
