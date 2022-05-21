@@ -202,7 +202,7 @@ loc.update_step()
 loc.plot_update_step_data(plot_data=True)
 ```
 
-### The Runs!
+### The Run
 I got rid of the background noise in the videos, because it was really loud in the lab when I was doing my testing.
 
 {% include youtube.html video="km1a6SF4Nyc" %}
