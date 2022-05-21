@@ -202,7 +202,13 @@ loc.plot_update_step_data(plot_data=True)
 ```
 
 ### The Run
-*video*
+I got rid of the background noise in the videos, because it was really loud in the lab when I was doing my testing.
+
+{% include youtube.html video="km1a6SF4Nyc" %}
+
+{% include youtube.html video="6AuTrQW2q0c" %}
+
+{% include youtube.html video="AuBxMJSb5yA" %}
 
 *discussion of performance*
 
@@ -213,7 +219,7 @@ Update Step Time: 0.023 secs
 
 Belief: (0.000, 0.000, -90.000)
 
-The x, y, and theta belief of (0 ft, 0 ft, -90.000) was correct! I took this localization data from the more precise, second half of the run. In that instance, robot was mostly in (0,0) tile and was facing downward in the map which would be 270 degrees or -90 degrees.
+The x, y, and theta belief of (0 ft, 0 ft, -90.000) was correct! I took this localization data from the more precise, second half of the run, "Segment 2". In that instance, robot was mostly in (0,0) tile and was facing downward in the map which would be 270 degrees or -90 degrees.
 
 ![Belief](img/lab13/Bel00.png)
 
