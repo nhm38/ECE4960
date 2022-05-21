@@ -201,7 +201,7 @@ loc.update_step()
 loc.plot_update_step_data(plot_data=True)
 ```
 
-### The Run
+### The Runs!
 I got rid of the background noise in the videos, because it was really loud in the lab when I was doing my testing.
 
 {% include youtube.html video="km1a6SF4Nyc" %}
@@ -210,7 +210,6 @@ I got rid of the background noise in the videos, because it was really loud in t
 
 {% include youtube.html video="AuBxMJSb5yA" %}
 
-*discussion of performance*
 
 ### Localization
 I was able to get the locaization to work well in Lab 12, so I wanted to focus more on executing the navigation in this lab. It would be very simply to implement localization at every waypoint by just calling the same functions I wrote as in Lab 12. That localization data could then be used to inform the controls to adjust the robot's position. I did perfrom Localization at the last waypoint (0,0) to check that I ended up in the correct place. 
@@ -226,10 +225,5 @@ The x, y, and theta belief of (0 ft, 0 ft, -90.000) was correct! I took this loc
 ![Localization Plot](img/lab13/Plot00.png)
 
 ### Discussion
-Please carefully document how well your solution, and all parts of it, works. This may include a brief introduction to the capabilities of your system, relevant code snippets, and a flowchart diagram of what processes (offboard/onboard) run when; how long each take to execute and how reliable/accurate the outcome is.
-
-Note that these waypoints are increasingly difficult, and you may not be able to execute the full length of waypoints or hit all of them accurately. Quantify and discuss how well your solution works (and why it works better in some situations). And of course, upload a video of your best run; please be sure to include both planning and execution steps (e.g. by combining screen capture and live video of the robot).
-
-NOT SUPER RELIABLE, ERRORS ACCUMULATE.
-
+In the full run, I was able to get close to all of the waypoints. However, the robot was not super precise, but the robot was able to get within a tile of the waypoints. The execution wasn't reliable super either. I started having trouble with the turn at the second waypoint. This was a crucial point, because when the robot overshot the turn, it would skew the enitre rest of the trajectory as errors accumulated throughout the run. I think some of the repeatability was affected by the battery usage. By breaking up the planned path into two separate runs, you can see that the navigation results were better. The Segment 1 and Segment 2 runs wer more precise and reliable, because there was less time for errors to accumulate. I think another method to try to implement to mitigate errors, or migitage the effect of errors, would be to do PID control on the distance from the walls/map boundaries. So instead of doing PID control on the distance traveled and just using the walls as a reference, I would calculate what the distance reading should be from the waypoint to the wall. Then the controls would be more based on the relative position with respect to the walls. This method would place more emphasis on the absolute readind from the ToF data whereas witht he method I did implement it didn't matter if ther was some offset in the ToF data, because I was looking at the change in distance. Overall, I was able to find a solution that was ble to perform pretty well. 
 
